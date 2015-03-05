@@ -1,0 +1,92 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	  google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawReboot);
+      google.setOnLoadCallback(drawInstall);
+
+      function drawReboot() {
+        var data = google.visualization.arrayToDataTable(
+        		<?php 
+        			$arrMounth=array(0,"January","February","March","April","May","June","July","August","September","October","November","December");
+					$html="[";
+        			$html.="['Mounth'";
+	        		foreach ($this->objReboot as $strYear => $arrLock){
+	        			$html.=",".$strYear;
+	        		}
+	        		$html.="]";
+	        		
+	        		for ($countM=1; $countM<13;$countM++){
+	        			$html.=",['".$arrMounth[$countM]."'";
+	        			foreach ($this->objReboot as $strYear => $arrTable){
+	        				if (!empty($arrTable[str_pad($countM, 2, "0", STR_PAD_LEFT)])){
+	        					$html.=",".$arrTable[str_pad($countM, 2, "0", STR_PAD_LEFT)];
+	        				}else{
+	        					$html.=",0";
+	        				}
+	        			}
+	        			$html.="]";
+	        		}
+	        		$html.="]";
+	        		echo $html;
+        		?>
+
+                );
+
+        var options = {
+          title: '<?php echo $this->translate("LBL_NUMBER_REBOOT_CLICKS");?>',
+          vAxis: {title: '',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_reboot'));
+        chart.draw(data, options);
+      }
+
+      function drawInstall() {
+          var data = google.visualization.arrayToDataTable(
+          		<?php 
+          			$arrMounth=array(0,"January","February","March","April","May","June","July","August","September","October","November","December");
+  					$html="[";
+          			$html.="['Mounth'";
+  	        		foreach ($this->objInstall as $strYear => $arrLock){
+  	        			$html.=",".$strYear;
+  	        		}
+  	        		$html.="]";
+  	        		
+  	        		for ($countM=1; $countM<13;$countM++){
+  	        			$html.=",['".$arrMounth[$countM]."'";
+  	        			foreach ($this->objInstall as $strYear => $arrTable){
+  	        				if (!empty($arrTable[str_pad($countM, 2, "0", STR_PAD_LEFT)])){
+  	        					$html.=",".$arrTable[str_pad($countM, 2, "0", STR_PAD_LEFT)];
+  	        				}else{
+  	        					$html.=",0";
+  	        				}
+  	        			}
+  	        			$html.="]";
+  	        		}
+  	        		$html.="]";
+  	        		echo $html;
+          		?>
+
+                  );
+
+          var options = {
+            title: '<?php echo $this->translate("LBL_NUMBER_INSTALL_CLICKS");?>',
+            vAxis: {title: '',  titleTextStyle: {color: 'red'}}
+          };
+
+          var chart = new google.visualization.ColumnChart(document.getElementById('chart_install'));
+          chart.draw(data, options);
+        }
+</script>
+<?php 
+//echo $this->select;
+?>
+<table>
+  <tr>
+    <td><div id="chart_reboot" style="width: 600px; height: 500px;"></div></td>
+    <td><div id="chart_install" style="width: 600px; height: 500px;"></div></td>
+  </tr>
+</table>
+
+
+

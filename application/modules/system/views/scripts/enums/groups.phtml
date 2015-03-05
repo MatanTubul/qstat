@@ -1,0 +1,15 @@
+<?php
+echo $this->objGrid;
+?>
+<script type="text/javascript">
+function editColumns() {
+	var selectedRow = jQuery('#Sites').jqGrid('getGridParam','selrow');
+	if (selectedRow) {
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'view-settings'), null, true ); ?>';
+		document.location.href = url +'/<?php echo Qstat_Db_Table_Groups::COL_ID_GROUPS;?>/'+ decodeURIComponent(selectedRow);
+	} else {
+		alert ('No Row Selected!');
+		return;
+	}
+}
+</script>

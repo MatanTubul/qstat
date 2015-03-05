@@ -1,0 +1,72 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	  google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+        		<?php 
+        			$arrMounth=array(0,"January","February","March","April","May","June","July","August","September","October","November","December");
+					$html="[";
+        			$html.="['Mounth'";
+	        		foreach ($this->Locks as $strYear => $arrLock){
+	        			$html.=",".$strYear;
+	        		}
+	        		$html.="]";
+	        		
+	        		for ($countM=1; $countM<13;$countM++){
+	        			$html.=",['".$arrMounth[$countM]."'";
+	        			foreach ($this->Locks as $strYear => $arrLock){
+	        				if (!empty($arrLock[str_pad($countM, 2, "0", STR_PAD_LEFT)])){
+	        					$html.=",".round($arrLock[str_pad($countM, 2, "0", STR_PAD_LEFT)]);
+	        				}else{
+	        					$html.=",0";
+	        				}
+	        			}
+	        			$html.="]";
+	        		}
+	        		$html.="]";
+	        		echo $html;
+        		?>
+                );
+
+        var options = {
+          title: '<?php echo $this->translate("LBL_LOCK_TIME_IN_DAYS_IN_EACH_MONTH_BY_EACH_YEAR");?>',
+          vAxis: {title: '',  titleTextStyle: {color: 'red'}},
+          width: '100%',
+          chartArea: {left:50,top:40, width:"80%",height:"90%"}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+</script>
+<div id="chart_div" style="width: 1000px; height: 500px;"></div>
+<br>
+<table>
+	<tr>
+		<td> 
+		  Total closed Locks:
+		</td>
+		<td> 
+			<?php echo $this->intCountEndedLocks?>
+		</td>
+	</tr>
+	<tr>
+		<td> 
+		  Total not closed Locks:
+		</td>
+		<td> 
+			<?php echo $this->intCountNotEndedLocks?>
+		</td>
+	</tr>
+	<tr>
+		<td> 
+		  Total Locks older 2011:
+		</td>
+		<td> 
+			<?php echo $this->intTotalCountLocks?>
+		</td>
+	</tr>
+
+</table>

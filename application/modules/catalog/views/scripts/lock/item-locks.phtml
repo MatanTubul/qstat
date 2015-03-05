@@ -1,0 +1,144 @@
+<?php
+
+// Reset all view helpers in Zend Framework
+// (http://stackoverflow.com/questions/5082819/reset-all-view-helpers-in-zend-framework, http://stackoverflow.com/questions/10291793/multiple-headscript-outputs) .
+$this->headScript()->exchangeArray(array());
+
+$objDateTimeElement = new Bf_Form_Element_DateTime('scheduledLockDateTimeElement');
+$objDateTimeElement
+->setLabel('LBL_SCHEDULED_LOCK_START')
+->setJQueryParam('dateFormat', 'dd/mm/yy');
+
+echo $this->headScript();
+echo $this->Actions( array( 'caption' => '', 'hr' => false, ) );
+?>
+<div id="lockDetails">
+	<?php echo $this->lock_details; ?>
+</div>
+<div id="scheduledLockDateTime">
+	<?php echo $objDateTimeElement->render(); ?>
+</div>
+<div id="scheduledLockDateTimeDelNotice">
+	<?php echo $this->translate('LBL_LOCL_DATE_TIME_DEL_MSG'); ?>
+</div>
+
+<script type="text/javascript">
+	$('#scheduledLockDateTime')
+	.dialog('destroy')
+	.dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php echo $this->translate('LBL_BTN_SET_SCHEDULED'); ?>": function() {
+				create_scheduled_lock();
+				$( this ).dialog( "close" );
+			},
+			"<?php echo $this->translate('LBL_BTN_GET_FORM_CANCEL'); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	$('#scheduledLockDateTimeDelNotice')
+	.dialog('destroy')
+	.dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php echo $this->translate('LBL_BTN_DEL_SCHEDULED_YES'); ?>": function() {
+				del_scheduled_lock();
+				$( this ).dialog( "close" );
+			},
+			"<?php echo $this->translate('LBL_BTN_DEL_SCHEDULED_NO'); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	function callDialog(){
+		$('#scheduledLockDateTime').dialog('open');
+	}
+
+	function del_scheduled_lock_dialog(){
+		$('#scheduledLockDateTimeDelNotice').dialog('open');
+	}
+
+	function release_machine_lock() {
+		$('#lockDetails').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'release-lock'), null, true ); ?>';
+
+		$.post(url, { params: '<?php echo $this->lockParameters; ?>' }, function(response) {
+			if ( ! ( response == '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK; ?>' ) ) {
+				alert('<?php echo $this->translate('LBL_ERROR_RELEASE_LOCK_FAILED'); ?>');
+			}
+			load_locks();
+		});
+	}
+
+	function edit_lock() {
+		$('#lockDetails').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'edit-lock-form'), null, true ); ?>';
+
+		var params = {};
+		params['<?php echo Qstat_Db_Table_Lock::COL_ID_CATALOG; ?>'] = "<?php echo $this->intCatalogId; ?>";
+		params['<?php echo Qstat_Db_Table_Lock::COL_ID_LOCK; ?>'] = "<?php echo $this->intLockId; ?>";
+
+		$('#locksData').load(url, params);
+	}
+
+	function create_machine_lock() {
+		$('#lockDetails').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'create-lock'), null, true ); ?>';
+
+		var params = {};
+		params['<?php echo Qstat_Db_Table_Lock::COL_ID_CATALOG; ?>'] = '<?php echo $this->lockParameters; ?>';
+
+		$.post(url, params, function(response) {
+			if ( ! ( response == '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK; ?>' ) ) {
+				alert('<?php echo $this->translate('LBL_ERROR_CREATE_LOCK_FAILED'); ?>');
+			}
+			load_locks();
+		});
+	}
+
+	function create_scheduled_lock() {
+		$('#lockDetails').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'create-scheduled-lock'), null, true ); ?>';
+
+		var params = {};
+		params['<?php echo Qstat_Db_Table_LockScheduled::COL_ID_CATALOG; ?>'] = "<?php echo $this->intCatalogId; ?>";
+		params['<?php echo Qstat_Db_Table_LockScheduled::COL_LOCK_START; ?>'] = $('#scheduledLockDateTimeElement').val();
+
+		$.post(url, params, function(response) {
+			//TODO: Handle response code correctly
+			if ( ! ( response == '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK; ?>' ) ) {
+				alert('<?php echo $this->translate('LBL_ERROR_CREATE_LOCK_FAILED'); ?>');
+			}
+			load_locks();
+		});
+	}
+
+	function del_scheduled_lock() {
+		var params = {};
+		params['<?php echo Qstat_Db_Table_LockScheduled::COL_ID_LOCK;?>'] = $('#scheduledLockId').val();
+
+		$('#lockDetails').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'del-scheduled-lock'), null, true ); ?>';
+
+
+		$.post(url, params, function(response) {
+			//TODO: Handle response code correctly
+			if ( ! ( response == '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK; ?>' ) ) {
+				alert('<?php echo $this->translate('LBL_ERROR_DEL_LOCK_FAILED'); ?>');
+			}
+			load_locks();
+		});
+	}
+</script>
+<?php
+
+echo $this->jQuery()->setRenderMode(ZendX_JQuery::RENDER_JQUERY_ON_LOAD);

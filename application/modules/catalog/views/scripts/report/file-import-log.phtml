@@ -1,0 +1,50 @@
+<?php
+$arrFiles = $this->arrFiles;
+if (!empty($arrFiles)){
+	?>
+	<table>
+  <tr>
+    <th><?php echo $this->translate("LBL_FILES_NAME")?></th>
+    <th><?php echo $this->translate("LBL_MODIFY_DATE")?></th>
+    <th></th>
+  </tr>
+  
+  <?php 
+  $strFormat = $this->arrConf["dateformat"]["js"]["shortdatetime"];
+  	foreach ($arrFiles as $arrFile){
+  		$arrFile['datetime'] = date($strFormat,$arrFile['datetime'] );
+  ?>
+  <tr>
+    <td><?php echo $arrFile['name']?></td>
+    <td><?php echo $arrFile['datetime']?></td>
+    <td><input type="button" value="<?php echo $this->translate("LBL_DELETE");?>" onclick="deleteFile('<?php echo $arrFile['name']?>','single')" ></td>
+  </tr>
+  <?php }?>
+  <tr>
+  	<td></td>
+  	<td></td>
+  	<td><input type="button" value="<?php echo $this->translate("LBL_DELETE_ALL");?>" onclick="deleteFile('<?php echo $arrFile['name']?>','all')" ></td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+function deleteFile(filename,type){
+
+	if (confirm('<?php echo $this->translate("MSG_ARE_YOU_SURE_TO_DELETE_FILE")?>')){
+		$.post("/catalog/report/delfile",
+				{ filename:filename,
+				  type:type},function (data){
+						$.jGrowl(data.msg);
+						document.location.href='';				
+	
+				  },'json'
+				);
+	}
+}
+</script>
+	
+	<?php 
+}else{
+	echo $this->translate("MSG_THERE_IS_NO_FILES");
+}
+?>

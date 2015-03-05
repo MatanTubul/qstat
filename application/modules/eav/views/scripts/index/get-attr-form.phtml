@@ -1,0 +1,14 @@
+<?php
+
+if (@$_GET ['o'])
+ echo "<div style='display:none'>";
+ 
+	echo $this->objForm;
+	
+if (@$_GET ['o'])
+ echo "</div>";
+	
+echo $this->strAdditionalData;
+
+$this->jQuery()->setRenderMode(ZendX_JQuery::RENDER_JQUERY_ON_LOAD);
+echo $this->jQuery();

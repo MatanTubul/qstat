@@ -1,0 +1,67 @@
+<?php if (!empty($this->objCatalog)&&$this->objCatalog->count()>0){?>
+<form id="servers_install_form">
+<table width="100%">
+	<tr>
+		<td colspan=2> <?php echo $this->translate("LBL_LIST_OF_SERVERS_THAT_ARE_UNLOCKED_TO_BE_INSTALL");?></td>
+	</tr>
+	<tr>
+		<td colspan="2"> &nbsp;</td>
+	</tr>
+	<tr>
+		<td width="150" > <?php echo $this->translate("LBL_SERVER_NAME");?></td>
+		<td width="150" > <?php echo $this->translate("LBL_SERVER_ILO_IP_ADDRESS");?></td>
+	</tr>
+	<?php foreach ($this->objCatalog as $objCatRow){?>
+		<tr> 
+			<td>
+			    <input name="cat_ids[]" type="hidden" value="<?php echo $objCatRow->{Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG}?>" >
+				<input name="cat_titles[<?php echo $objCatRow->{Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG}?>]" type="hidden" value="<?php echo $objCatRow->{Catalog_Model_CatalogData::COL_TITLE}?>" >
+				<?php echo $objCatRow->{Catalog_Model_CatalogData::COL_TITLE}?>
+			</td>
+			<td>
+				<input name="ips[<?php echo $objCatRow->{Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG}?>]" type="hidden" value="<?php echo $objCatRow->{Bf_Eav_Db_Values_Varchar::COL_VALUE}?>" >
+				<?php echo $objCatRow->{Bf_Eav_Db_Values_Varchar::COL_VALUE}?>
+			</td>
+		</tr>
+<?php }?>
+		<tr>
+		<td colspan="2"> &nbsp;</td>
+		</tr>
+	<tr>
+		<td>
+			<?php echo $this->translate("LBL_SELECT_OS");?>
+		</td>
+		<td>
+			<select id="url_os" name="url_os">
+				<option value="0"><?php echo $this->translate ( 'Please Select' )?></option>
+				<option value="http://enhancedpxe/enhanced/lin-choose.php">Linux</option>
+				<option value="http://enhancedpxe/enhanced/win-choose.php">Windows</option>
+				<option value="http://enhancedpxe/enhanced/vrthost-choose.php">Virtualization</option>
+			</select>	
+		</td>
+	</tr>
+		<tr>
+		<td colspan="2"> &nbsp;</td>
+		</tr>
+	<tr>
+	<td> &nbsp;</td>
+	<td><button onclick="openUrl()" type="button"> <?php echo $this->translate("LBL_INSTALL_ALL")?></button> </td>
+	</tr>
+</table>
+</form>
+<script type="text/javascript">
+function openUrl(){
+
+	if ($("#url_os").val()==0){
+		alert('<?php echo $this->translate("LBL_PLEASE_SELECT_OS")?>');
+		return;
+	}
+	var data = $("#servers_install_form").serialize();
+	window.open("/catalog/index/redirect-to-server-install?"+data);
+	$( "#Catalog" ).dialog( "close" );
+	$('#Catalog').trigger("reloadGrid");
+}
+</script>
+<?php }else{
+	echo $this->translate("LBL_THERE_IS_NO_UNLOCKED_SERVERS_WITH_IP_ADDRESS_SELECTED");
+}?>

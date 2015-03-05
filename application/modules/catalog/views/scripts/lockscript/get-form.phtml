@@ -1,0 +1,27 @@
+<?php
+
+echo $this->objForm;
+
+
+
+if (!empty($this->intLockId)){
+	echo "<ul>";
+	foreach ($this->objLockParamsRowSet as $objLockParamsRow){
+		echo "<li>";
+		echo $objLockParamsRow->{Qstat_Db_Table_LockManagmentParams::COL_LOCK_PARAM_PREFIX};
+		echo $objLockParamsRow->{Qstat_Db_Table_LockManagmentParams::COL_LOCK_PARAM_NAME};
+		echo $objLockParamsRow->{Qstat_Db_Table_LockManagmentParams::COL_LOCK_PARAM_SUFFIX};
+		echo $this->translate($objLockParamsRow->{Bf_Eav_Db_Attributes::COL_ATTR_CODE});
+		echo "&nbsp;<button type='button' onClick=' delParam(".$objLockParamsRow->{Qstat_Db_Table_LockManagmentParams::COL_ID_LOCK_MNG_PARAM}.");' >".$this->translate('LBL_BTN_LOCK_PARAM_DELETE')."</button>";
+		echo "</li>"; 
+	}
+	echo "</ul>";
+	
+	echo $this->objParamForm;
+} else {
+	echo $this->translate('LBL_LOCK_SCRIPT_MUST_BE_SAVED_FIRST');
+}
+
+
+$this->jQuery()->setRenderMode(ZendX_JQuery::RENDER_JQUERY_ON_LOAD);
+echo $this->jQuery();//->onLoad();

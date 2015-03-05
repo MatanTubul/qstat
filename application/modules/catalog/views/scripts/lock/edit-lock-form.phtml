@@ -1,0 +1,45 @@
+<?php
+echo $this->Actions( array( 'caption' => '', 'hr' => false, ) );
+echo $this->objForm;
+?>
+<script type="text/javascript">
+	function save_lock() {
+		var formSerializeData = '';
+		formSerializeData  = $('#<?php echo $this->objForm->getAttrib('id');?>').serialize();
+
+		$.post('<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'save'), null, true ); ?>', formSerializeData, function(data, textStatus) {
+			//data contains the JSON object
+			//textStatus contains the status: success, error, etc
+			if (data.msg !== ''){
+				$.jGrowl(data.msg);
+			}
+
+			$('input').parent().find('.errors').remove();
+
+			if (data.error_msg !== '') {
+				$.each(data.error_msg,function(element,arrData) {
+					var o = '<ul class="errors">';
+					$.each(arrData,function(key,value) {
+						o+='<li>'+ value+'</li>';
+					});
+					o+='</ul>';
+
+					$('#'+element).parent().append(o);
+
+				});
+			}
+
+			if ( data.code == '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK ; ?>' ) {
+				// OK.
+				load_locks();
+			}
+			}, "json");
+	}
+
+	$('select').each(function( index ) {
+		$(this)
+		.find('option')
+		.sort(NASort)
+		.appendTo($(this));
+	});
+</script>

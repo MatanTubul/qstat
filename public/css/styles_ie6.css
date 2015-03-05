@@ -1,0 +1,5 @@
+					div.tabs div.regular,
+					div.tabs div.selected {
+						width:20px;
+						white-space:nowrap;
+					}

@@ -1,0 +1,139 @@
+<?php
+echo $this->objGrid;
+
+?>
+<div id="formDiv" title="<?php echo $this->translate('LBL_CATALOG_LOCK_PARAMS');?>">&nbsp;</div>
+<div id="entTypeDiv" title="<?php echo $this->translate('LBL_CATALOG_ENT_TYPE_SELECT');?>">&nbsp;</div>
+<script type="text/javascript">
+
+function addRow(){
+	var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-ent-selector'), null, true ); ?>';
+
+	var params = {};
+	
+	$('#entTypeDiv').load(url,params,function (){
+		$('#entTypeDiv').dialog( "open" ); 
+	});	
+}
+
+
+$("#entTypeDiv").dialog({
+	autoOpen: false,
+	height: 'auto',
+	width: 'auto',
+	modal: true,
+	buttons: {
+		"<?php
+		echo $this->translate('LBL_BTN_GET_FORM');
+		?>": function() {
+
+			var boolNewForm = true;
+			
+			var intEntTypeId = $('#<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>').val();
+			
+			getForm(boolNewForm, intEntTypeId);
+							
+			$( this ).dialog( "close" );
+		},
+		"<?php
+		echo $this->translate('LBL_BTN_GET_FORM_CANCEL');
+		?>": function() {
+			$( this ).dialog( "close" );
+		}
+	}
+});
+
+
+function getForm(boolNewForm, intEntTypeId){
+	var lockId = 0;
+	if (!boolNewForm) {
+		var selectedRow = jQuery('#LockScriptsGrid').jqGrid('getGridParam','selrow');
+		if (selectedRow) {
+			lockId = selectedRow;
+		} else {
+			alert ('No Row Selected!');
+			return;
+		}
+	}
+	
+	var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lockscript', 'action' => 'get-form'), null, true ); ?>';
+
+	var params = {};
+	params['<?php echo Qstat_Db_Table_LockManagment::COL_ID_LOCK_MNG;?>'] 	= lockId;
+	params['<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>']	= intEntTypeId;
+
+	$('#formDiv').load(url,params,function (){ $('#formDiv').dialog( "open" ); });
+}
+
+$("#formDiv").dialog({
+	autoOpen: false,
+	height: 'auto',
+	width: 'auto',
+	modal: true,
+	buttons: {
+		"<?php
+		echo $this->translate('LBL_BTN_FORM_SAVE');
+		?>": function() {
+		
+		var formSerializeData =  $('#Lockscript').serialize();;
+	
+		$.post('<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lockscript', 'action' => 'save-lock'), null, true ); ?>', formSerializeData, function(data, textStatus) {
+			  //data contains the JSON object
+			  //textStatus contains the status: success, error, etc
+				if (data.msg !== ''){
+					$.jGrowl(data.msg);
+				}
+				if (data.code == 'ok'){
+					$('#LockScriptsGrid').trigger("reloadGrid");					
+				}	
+			}, "json");
+		
+							
+			$( this ).dialog( "close" );
+		},
+		"<?php
+		echo $this->translate('LBL_BTN_FORM_CANCEL');
+		?>": function() {
+			$( this ).dialog( "close" );
+		}
+	}
+});
+ 
+function sendParam(){
+
+	var formSerializeData =  $('#LockscriptParam').serialize();;
+
+	$.post('<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lockscript', 'action' => 'save-lock-param'), null, true ); ?>', formSerializeData, function(data, textStatus) {
+		  //data contains the JSON object
+		  //textStatus contains the status: success, error, etc
+			if (data.msg !== ''){
+				$.jGrowl(data.msg);
+			}
+			if (data.code == 'ok'){
+				getForm(false, 0);
+			}	
+		}, "json");
+
+	//$('#LockscriptParam').reset();
+	
+}
+
+function delParam(intParamId){
+
+
+	$.post('<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lockscript', 'action' => 'del-lock-param'), null, true ); ?>', '<?php echo Qstat_Db_Table_LockManagmentParams::COL_ID_LOCK_MNG_PARAM;?>='+intParamId, function(data, textStatus) {
+		  //data contains the JSON object
+		  //textStatus contains the status: success, error, etc
+			if (data.msg !== ''){
+				$.jGrowl(data.msg);
+			}
+			if (data.code == 'ok'){
+				getForm(false, 0);
+			}	
+		}, "json");
+
+	//$('#LockscriptParam').reset();
+	
+}
+
+</script>

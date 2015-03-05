@@ -1,0 +1,964 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<ew-language date="2012/6/30" version="5.0.0" id="en" name="English" desc="English" author="e.World Technology Ltd.">
+	<global>
+		<phrase id="allrecords" value="All"/>
+		<phrase id="alwaysask" value="Always ask for my user name and password"/>
+		<phrase id="autologin" value="Auto login until I logout explicitly"/>
+		<phrase id="backtologin" value="Back to Login Page"/>
+		<phrase id="booleanno" value="No"/>
+		<phrase id="booleanyes" value="Yes"/>
+		<phrase id="cancelbtn" value="Cancel" client="1"/>
+		<phrase id="currentfilters" value="Current filters:"/>
+		<phrase id="entersenderemail" value="Please enter sender email" client="1"/>
+		<phrase id="enterpropersenderemail" value="Exceed maximum sender email count or email address incorrect" client="1"/>
+		<phrase id="enterrecipientemail" value="Please enter recipient email" client="1"/>
+		<phrase id="enterproperrecipientemail" value="Exceed maximum recipient email count or email address incorrect" client="1"/>
+		<phrase id="enterproperccemail" value="Exceed maximum cc email count or email address incorrect" client="1"/>
+		<phrase id="enterproperbccemail" value="Exceed maximum bcc email count or email address incorrect" client="1"/>
+		<phrase id="entersubject" value="Please enter subject" client="1"/>
+		<phrase id="emailformsender" value="From"/>
+		<phrase id="emailformrecipient" value="To"/>
+		<phrase id="emailformcc" value="Cc"/>
+		<phrase id="emailformbcc" value="Bcc"/>
+		<phrase id="emailformsubject" value="Subject"/>
+		<phrase id="emailformmessage" value="Message"/>
+		<phrase id="emailformcontenttype" value="Send as"/>
+		<phrase id="emailformcontenttypeurl" value="URL"/>
+		<phrase id="emailformcontenttypehtml" value="HTML"/>
+		<phrase id="emptylabel" value="(Empty)"/>
+		<phrase id="enterpassword" value="Please enter password" client="1"/>
+		<phrase id="enterpwd" value="Please enter password" client="1"/>
+		<phrase id="entersearchcriteria" value="Please enter search criteria"/>
+		<phrase id="enteruid" value="Please enter user ID" client="1"/>
+		<phrase id="exceedmaxemailexport" value="Exceed maximum export email count. Please try again later."/>
+		<phrase id="exporttoemail" value="Email" client="1"/>
+		<phrase id="exporttoexcel" value="Export to Excel"/>
+		<phrase id="exporttopdf" value="Export to PDF"/>
+		<phrase id="exporttoword" value="Export to Word"/>
+		<phrase id="filters" value="Filters"/>
+		<phrase id="incorrectcreditcard" value="Incorrect credit card number" client="1"/>
+		<phrase id="incorrectdateymd" value="Incorrect date, format = yyyy%smm%sdd"/>
+		<phrase id="incorrectdatemdy" value="Incorrect date, format = mm%sdd%syyyy"/>
+		<phrase id="incorrectdatedmy" value="Incorrect date, format = dd%smm%syyyy"/>
+		<phrase id="incorrectshortdateymd" value="Incorrect date, format = yy%smm%sdd"/>
+		<phrase id="incorrectshortdatemdy" value="Incorrect date, format = mm%sdd%syy"/>
+		<phrase id="incorrectshortdatedmy" value="Incorrect date, format = dd%smm%syy"/>
+		<phrase id="incorrectemail" value="Incorrect email" client="1"/>
+		<phrase id="incorrectfield" value="Incorrect field" client="1"/>
+		<phrase id="incorrectfloat" value="Incorrect floating point number" client="1"/>
+		<phrase id="incorrectguid" value="Incorrect GUID" client="1"/>
+		<phrase id="incorrectinteger" value="Incorrect integer" client="1"/>
+		<phrase id="incorrectphone" value="Incorrect phone number" client="1"/>
+		<phrase id="incorrectrange" value="Number must be between %1 and %2" client="1"/>
+		<phrase id="incorrectregexp" value="Regular expression not matched" client="1"/>
+		<phrase id="incorrectssn" value="Incorrect Social Security Number" client="1"/>
+		<phrase id="incorrecttime" value="Incorrect time (hh:mm:ss)" client="1"/>
+		<phrase id="incorrectzip" value="Incorrect ZIP code" client="1"/>
+		<phrase id="invaliduidpwd" value="Incorrect user ID or password"/>
+		<phrase id="language" value="Language"/>
+		<phrase id="login" value="Login"/>
+		<phrase id="loginpage" value="Login Page"/>
+		<phrase id="logout" value="Logout"/>
+		<phrase id="monthjan" value="Jan"/>
+		<phrase id="monthfeb" value="Feb"/>
+		<phrase id="monthmar" value="Mar"/>
+		<phrase id="monthapr" value="Apr"/>
+		<phrase id="monthmay" value="May"/>
+		<phrase id="monthjun" value="Jun"/>
+		<phrase id="monthjul" value="Jul"/>
+		<phrase id="monthaug" value="Aug"/>
+		<phrase id="monthsep" value="Sep"/>
+		<phrase id="monthoct" value="Oct"/>
+		<phrase id="monthnov" value="Nov"/>
+		<phrase id="monthdec" value="Dec"/>
+		<phrase id="next" value="Next"/>
+		<phrase id="nopermission" value="You do not have the right permission to view the page"/>
+		<phrase id="norecord" value="No records found"/>
+		<phrase id="noreportorcharts" value="No report or charts is selected for generation. Please check your report/charts settings."/>
+		<phrase id="nodistinctcolvals" value="No distinct column values for sql: "/>
+		<phrase id="nulllabel" value="(Null)"/>
+		<phrase id="of" value="of"/>
+		<phrase id="page" value="Page"/>
+		<phrase id="pagerfirst" value="First"/>
+		<phrase id="pagerlast" value="Last"/>
+		<phrase id="pagernext" value="Next"/>
+		<phrase id="pagerprevious" value="Previous"/>
+		<phrase id="password" value="Password"/>
+		<phrase id="pleaseselect" value=""/>
+		<phrase id="popupall" value="(All)" client="1"/>
+		<phrase id="popupcancel" value="Cancel" client="1"/>
+		<phrase id="popupfrom" value="From" client="1"/>
+		<phrase id="popupnovalue" value="No value selected!" client="1"/>
+		<phrase id="popupok" value="  OK  " client="1"/>
+		<phrase id="popupselect" value="Please Select" client="1"/>
+		<phrase id="popupto" value="To" client="1"/>
+		<phrase id="prev" value="Prev"/>
+		<phrase id="printerfriendly" value="Printer Friendly"/>
+		<phrase id="group" value="Groups"/>
+		<phrase id="groupsperpage" value="Groups per page"/>
+		<phrase id="qtr1" value="1st Quarter"/>
+		<phrase id="qtr2" value="2nd Quarter"/>
+		<phrase id="qtr3" value="3rd Quarter"/>
+		<phrase id="qtr4" value="4th Quarter"/>
+		<phrase id="record" value="Records"/>
+		<phrase id="recordsperpage" value="Records per page"/>
+		<phrase id="report" value="Reports"/>
+		<phrase id="reset" value="Reset"/>
+		<phrase id="resetallfilter" value="Reset all filters"/>
+		<phrase id="resetsearch" value="Reset search criteria"/>
+		<phrase id="rptavg" value="AVG"/>
+		<phrase id="rptcnt" value="COUNT"/>
+		<phrase id="rptdtlrec" value=" detail records"/>
+		<phrase id="rptgrandsummary" value="Grand Summary"/>
+		<phrase id="rptgrandtotal" value="Grand Total"/>
+		<phrase id="rptmax" value="MAX"/>
+		<phrase id="rptmin" value="MIN"/>
+		<phrase id="rptpagesummary" value="Page Summary"/>
+		<phrase id="rptpagetotal" value="Page Total"/>
+		<phrase id="rptseparator" value=":&amp;nbsp;"/>
+		<phrase id="rptsum" value="SUM"/>
+		<phrase id="rptsumhead" value="Summary for"/>
+		<phrase id="saveusername" value="Save my user name"/>
+		<phrase id="search" value="Search"/>
+		<phrase id="selectall" value="(All)"/>
+		<phrase id="sendemailbtn" value="Send" client="1"/>
+		<phrase id="sendemailsuccess" value="Email sent successfully" client="1"/>
+		<phrase id="showall" value="Show all"/>
+		<phrase id="summary" value="Summary"/>
+		<phrase id="tasks" value="Tasks"/>
+		<phrase id="to" value="to"/>
+		<phrase id="top" value="Top"/>
+		<phrase id="total" value="Total"/>
+		<phrase id="username" value="User name"/>
+		<phrase id="week" value="Week"/>
+		<phrase id="year" value="Year"/>
+		<!-- Search Operators -->
+		<phrase id="=" value="="/>
+		<phrase id="&lt;&gt;" value="&lt;&gt;"/>
+		<phrase id="&lt;" value="&lt;"/>
+		<phrase id="&lt;=" value="&lt;="/>
+		<phrase id="&gt;" value="&gt;"/>
+		<phrase id="&gt;=" value="&gt;="/>
+		<phrase id="like" value="contains"/>
+		<phrase id="not like" value="not contains"/>
+		<phrase id="starts with" value="starts with"/>
+		<phrase id="between" value="between"/>
+		<phrase id="and" value="and"/>
+		<phrase id="or" value="or"/>
+		<!-- Menu Prefix/Suffix -->
+		<phrase id="simplereportmenuitemprefix" value=""/>
+		<phrase id="simplereportmenuitemsuffix" value=""/>
+		<phrase id="detailsummaryreportmenuitemprefix" value=""/>
+		<phrase id="detailsummaryreportmenuitemsuffix" value=""/>
+		<phrase id="crosstabreportmenuitemprefix" value=""/>
+		<phrase id="crosstabreportmenuitemsuffix" value=""/>
+		<phrase id="chartreportmenuitemprefix" value=""/>
+		<phrase id="chartreportmenuitemsuffix" value=""/>
+		<!-- Advanced Filter -->
+		<phrase id="future" value="Future"/>
+		<phrase id="past" value="Past"/>
+		<phrase id="last14days" value="Last 14 days"/>
+		<phrase id="last30days" value="Last 30 days"/>
+		<phrase id="last7days" value="Last 7 days"/>
+		<phrase id="next14days" value="Next 14 days"/>
+		<phrase id="next30days" value="Next 30 days"/>
+		<phrase id="next7days" value="Next 7 days"/>
+		<phrase id="today" value="Today"/>
+		<phrase id="tomorrow" value="Tomorrow"/>
+		<phrase id="yesterday" value="Yesterday"/>
+		<phrase id="lastmonth" value="Last month"/>
+		<phrase id="nextmonth" value="Next month"/>
+		<phrase id="thismonth" value="This month"/>
+		<phrase id="lasttwoweeks" value="Last two weeks"/>
+		<phrase id="lastweek" value="Last week"/>
+		<phrase id="nexttwoweeks" value="Next two weeks"/>
+		<phrase id="nextweek" value="Next week"/>
+		<phrase id="thisweek" value="This week"/>
+		<phrase id="lastyear" value="Last year"/>
+		<phrase id="nextyear" value="Next year"/>
+		<phrase id="thisyear" value="This year"/>
+	</global>
+	<project><phrase id="bodytitle" value="Qstat Reports system"/>
+<phrase id="footertext" value="Frenkel Online"/>
+<menu id="1"><phrase id="menutext" value="acl assertion"/>
+</menu>
+<menu id="2"><phrase id="menutext" value="acl permission"/>
+</menu>
+<menu id="3"><phrase id="menutext" value="acl resources"/>
+</menu>
+<menu id="4"><phrase id="menutext" value="acl roles"/>
+</menu>
+<menu id="5"><phrase id="menutext" value="attributes"/>
+</menu>
+<menu id="6"><phrase id="menutext" value="attributes values select"/>
+</menu>
+<menu id="7"><phrase id="menutext" value="catalog"/>
+</menu>
+<menu id="8"><phrase id="menutext" value="catalog data"/>
+</menu>
+<menu id="9"><phrase id="menutext" value="entities"/>
+</menu>
+<menu id="10"><phrase id="menutext" value="entities types"/>
+</menu>
+<menu id="11"><phrase id="menutext" value="entities types groups"/>
+</menu>
+<menu id="12"><phrase id="menutext" value="entities values"/>
+</menu>
+<menu id="13"><phrase id="menutext" value="files"/>
+</menu>
+<menu id="14"><phrase id="menutext" value="group attributes"/>
+</menu>
+<menu id="15"><phrase id="menutext" value="groups"/>
+</menu>
+<menu id="16"><phrase id="menutext" value="importer translate"/>
+</menu>
+<menu id="17"><phrase id="menutext" value="languages"/>
+</menu>
+<menu id="18"><phrase id="menutext" value="locks"/>
+</menu>
+<menu id="19"><phrase id="menutext" value="lockscripts"/>
+</menu>
+<menu id="20"><phrase id="menutext" value="lockscripts params"/>
+</menu>
+<menu id="21"><phrase id="menutext" value="menu"/>
+</menu>
+<menu id="22"><phrase id="menutext" value="scheduled locks"/>
+</menu>
+<menu id="23"><phrase id="menutext" value="sites"/>
+</menu>
+<menu id="24"><phrase id="menutext" value="system labels"/>
+</menu>
+<menu id="25"><phrase id="menutext" value="users"/>
+</menu>
+<menu id="26"><phrase id="menutext" value="values blob"/>
+</menu>
+<menu id="27"><phrase id="menutext" value="values datetime"/>
+</menu>
+<menu id="28"><phrase id="menutext" value="values file"/>
+</menu>
+<menu id="29"><phrase id="menutext" value="values float"/>
+</menu>
+<menu id="30"><phrase id="menutext" value="values int"/>
+</menu>
+<menu id="31"><phrase id="menutext" value="values select"/>
+</menu>
+<menu id="32"><phrase id="menutext" value="values text"/>
+</menu>
+<menu id="33"><phrase id="menutext" value="values varchar"/>
+</menu>
+<menu id="34"><phrase id="menutext" value="View 1"/>
+</menu>
+<menu id="37"><phrase id="menutext" value="Custom View 1"/>
+</menu>
+<menu id="38"><phrase id="menutext" value="Server Incriment per month"/>
+</menu>
+<menu id="39"><phrase id="menutext" value="Total Server Per Month"/>
+</menu>
+<menu id="40"><phrase id="menutext" value="Incrimet Per Month"/>
+</menu>
+<table id="acl_assertion"><phrase id="tblcaption" value="acl assertion"/>
+<field id="id_assertion"><phrase id="fldcaption" value="id assertion"/>
+</field>
+<field id="assertion_name"><phrase id="fldcaption" value="assertion name"/>
+</field>
+<field id="assertion_class"><phrase id="fldcaption" value="assertion class"/>
+</field>
+<field id="assertion_desc"><phrase id="fldcaption" value="assertion desc"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="acl_permission"><phrase id="tblcaption" value="acl permission"/>
+<field id="id_permission"><phrase id="fldcaption" value="id permission"/>
+</field>
+<field id="id_resources"><phrase id="fldcaption" value="id resources"/>
+</field>
+<field id="id_roles"><phrase id="fldcaption" value="id roles"/>
+</field>
+<field id="action"><phrase id="fldcaption" value="action"/>
+</field>
+<field id="env"><phrase id="fldcaption" value="env"/>
+</field>
+<field id="id_assertion"><phrase id="fldcaption" value="id assertion"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="acl_resources"><phrase id="tblcaption" value="acl resources"/>
+<field id="id_resources"><phrase id="fldcaption" value="id resources"/>
+</field>
+<field id="module"><phrase id="fldcaption" value="module"/>
+</field>
+<field id="controller"><phrase id="fldcaption" value="controller"/>
+</field>
+<field id="is_virtual"><phrase id="fldcaption" value="is virtual"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="acl_roles"><phrase id="tblcaption" value="acl roles"/>
+<field id="id_roles"><phrase id="fldcaption" value="id roles"/>
+</field>
+<field id="role"><phrase id="fldcaption" value="role"/>
+</field>
+<field id="id_parent"><phrase id="fldcaption" value="id parent"/>
+</field>
+<field id="order"><phrase id="fldcaption" value="order"/>
+</field>
+<field id="cn"><phrase id="fldcaption" value="cn"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="attributes"><phrase id="tblcaption" value="attributes"/>
+<field id="id_attributes"><phrase id="fldcaption" value="id attributes"/>
+</field>
+<field id="attribute_code"><phrase id="fldcaption" value="attribute code"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="description"/>
+</field>
+<field id="units"><phrase id="fldcaption" value="units"/>
+</field>
+<field id="value_type"><phrase id="fldcaption" value="value type"/>
+</field>
+<field id="is_multi_value"><phrase id="fldcaption" value="is multi value"/>
+</field>
+<field id="is_lang_sync"><phrase id="fldcaption" value="is lang sync"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+<field id="is_show_list"><phrase id="fldcaption" value="is show list"/>
+</field>
+</table>
+<table id="attributes_values_select"><phrase id="tblcaption" value="attributes values select"/>
+<field id="id_attributes"><phrase id="fldcaption" value="id attributes"/>
+</field>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="sort_order"><phrase id="fldcaption" value="sort order"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="catalog"><phrase id="tblcaption" value="catalog"/>
+<field id="id_catalog"><phrase id="fldcaption" value="id catalog"/>
+</field>
+<field id="module_code"><phrase id="fldcaption" value="module code"/>
+</field>
+<field id="id_parent"><phrase id="fldcaption" value="id parent"/>
+</field>
+<field id="cat_path"><phrase id="fldcaption" value="cat path"/>
+</field>
+<field id="id_entities"><phrase id="fldcaption" value="id entities"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+<field id="is_locked"><phrase id="fldcaption" value="is locked"/>
+</field>
+<field id="min_id_acl_roles"><phrase id="fldcaption" value="min id acl roles"/>
+</field>
+<field id="is_folder"><phrase id="fldcaption" value="is folder"/>
+</field>
+<field id="has_children"><phrase id="fldcaption" value="has children"/>
+</field>
+</table>
+<table id="catalog_data"><phrase id="tblcaption" value="catalog data"/>
+<field id="id_catalog"><phrase id="fldcaption" value="id catalog"/>
+</field>
+<field id="id_languages"><phrase id="fldcaption" value="id languages"/>
+</field>
+<field id="title"><phrase id="fldcaption" value="title"/>
+</field>
+<field id="description"><phrase id="fldcaption" value="description"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+<field id="ip_address"><phrase id="fldcaption" value="ip address"/>
+</field>
+<field id="id_groups"><phrase id="fldcaption" value="id groups"/>
+</field>
+<field id="id_sites"><phrase id="fldcaption" value="id sites"/>
+</field>
+<field id="is_shared"><phrase id="fldcaption" value="is shared"/>
+</field>
+<field id="id_script_lock"><phrase id="fldcaption" value="id script lock"/>
+</field>
+<field id="id_script_unlock"><phrase id="fldcaption" value="id script unlock"/>
+</field>
+<field id="lock_limit_time"><phrase id="fldcaption" value="lock limit time"/>
+</field>
+</table>
+<table id="entities"><phrase id="tblcaption" value="entities"/>
+<field id="id_entities"><phrase id="fldcaption" value="id entities"/>
+</field>
+<field id="id_entities_types"><phrase id="fldcaption" value="id entities types"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="entities_types"><phrase id="tblcaption" value="entities types"/>
+<field id="id_entities_types"><phrase id="fldcaption" value="id entities types"/>
+</field>
+<field id="entity_type_title"><phrase id="fldcaption" value="entity type title"/>
+</field>
+<field id="sort_order"><phrase id="fldcaption" value="sort order"/>
+</field>
+<field id="is_folder"><phrase id="fldcaption" value="is folder"/>
+</field>
+<field id="is_locked"><phrase id="fldcaption" value="is locked"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="entities_types_groups"><phrase id="tblcaption" value="entities types groups"/>
+<field id="id_entities_types_groups"><phrase id="fldcaption" value="id entities types groups"/>
+</field>
+<field id="id_entities_types"><phrase id="fldcaption" value="id entities types"/>
+</field>
+<field id="group_legend_code"><phrase id="fldcaption" value="group legend code"/>
+</field>
+<field id="sort_order"><phrase id="fldcaption" value="sort order"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="entities_values"><phrase id="tblcaption" value="entities values"/>
+<field id="id_entities"><phrase id="fldcaption" value="id entities"/>
+</field>
+<field id="id_attributes"><phrase id="fldcaption" value="id attributes"/>
+</field>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="id_languages"><phrase id="fldcaption" value="id languages"/>
+</field>
+<field id="bool_value"><phrase id="fldcaption" value="bool value"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="files"><phrase id="tblcaption" value="files"/>
+<field id="id_files"><phrase id="fldcaption" value="id files"/>
+</field>
+</table>
+<table id="group_attributes"><phrase id="tblcaption" value="group attributes"/>
+<field id="id_entities_types_groups"><phrase id="fldcaption" value="id entities types groups"/>
+</field>
+<field id="id_attributes"><phrase id="fldcaption" value="id attributes"/>
+</field>
+<field id="is_required"><phrase id="fldcaption" value="is required"/>
+</field>
+<field id="sort_order"><phrase id="fldcaption" value="sort order"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="groups"><phrase id="tblcaption" value="groups"/>
+<field id="id_groups"><phrase id="fldcaption" value="id groups"/>
+</field>
+<field id="groups_name"><phrase id="fldcaption" value="groups name"/>
+</field>
+<field id="id_sites"><phrase id="fldcaption" value="id sites"/>
+</field>
+<field id="use_custom_fields"><phrase id="fldcaption" value="use custom fields"/>
+</field>
+<field id="custom_fields"><phrase id="fldcaption" value="custom fields"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="importer_translate"><phrase id="tblcaption" value="importer translate"/>
+<field id="import_code"><phrase id="fldcaption" value="import code"/>
+</field>
+<field id="import_translate_to"><phrase id="fldcaption" value="import translate to"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="languages"><phrase id="tblcaption" value="languages"/>
+<field id="id_languages"><phrase id="fldcaption" value="id languages"/>
+</field>
+<field id="lang_title"><phrase id="fldcaption" value="lang title"/>
+</field>
+<field id="lang_encoding"><phrase id="fldcaption" value="lang encoding"/>
+</field>
+<field id="lang_dir"><phrase id="fldcaption" value="lang dir"/>
+</field>
+<field id="lang_locale"><phrase id="fldcaption" value="lang locale"/>
+</field>
+<field id="is_default"><phrase id="fldcaption" value="is default"/>
+</field>
+</table>
+<table id="locks"><phrase id="tblcaption" value="locks"/>
+<field id="id_lock"><phrase id="fldcaption" value="id lock"/>
+</field>
+<field id="id_catalog"><phrase id="fldcaption" value="id catalog"/>
+</field>
+<field id="id_groups"><phrase id="fldcaption" value="id groups"/>
+</field>
+<field id="id_users"><phrase id="fldcaption" value="id users"/>
+</field>
+<field id="lock_start"><phrase id="fldcaption" value="lock start"/>
+</field>
+<field id="lock_start_script_on"><phrase id="fldcaption" value="lock start script on"/>
+</field>
+<field id="lock_start_script_command"><phrase id="fldcaption" value="lock start script command"/>
+</field>
+<field id="lock_start_script_output"><phrase id="fldcaption" value="lock start script output"/>
+</field>
+<field id="lock_end"><phrase id="fldcaption" value="lock end"/>
+</field>
+<field id="lock_end_script_on"><phrase id="fldcaption" value="lock end script on"/>
+</field>
+<field id="lock_end_script_command"><phrase id="fldcaption" value="lock end script command"/>
+</field>
+<field id="lock_end_script_output"><phrase id="fldcaption" value="lock end script output"/>
+</field>
+<field id="lock_scheduled_unlock"><phrase id="fldcaption" value="lock scheduled unlock"/>
+</field>
+<field id="lock_notification_sent"><phrase id="fldcaption" value="lock notification sent"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="lockscripts"><phrase id="tblcaption" value="lockscripts"/>
+<field id="id_lockscript"><phrase id="fldcaption" value="id lockscript"/>
+</field>
+<field id="lockscript_name"><phrase id="fldcaption" value="lockscript name"/>
+</field>
+<field id="lockscript_command_code"><phrase id="fldcaption" value="lockscript command code"/>
+</field>
+<field id="lockscript_eav_type"><phrase id="fldcaption" value="lockscript eav type"/>
+</field>
+<field id="lockscript_params"><phrase id="fldcaption" value="lockscript params"/>
+</field>
+<field id="lockscript_command_type"><phrase id="fldcaption" value="lockscript command type"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="lockscripts_params"><phrase id="tblcaption" value="lockscripts params"/>
+<field id="id_lockscripts_params"><phrase id="fldcaption" value="id lockscripts params"/>
+</field>
+<field id="id_lockscript"><phrase id="fldcaption" value="id lockscript"/>
+</field>
+<field id="param_prefix"><phrase id="fldcaption" value="param prefix"/>
+</field>
+<field id="param_name"><phrase id="fldcaption" value="param name"/>
+</field>
+<field id="param_suffix"><phrase id="fldcaption" value="param suffix"/>
+</field>
+<field id="id_attributes"><phrase id="fldcaption" value="id attributes"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="_menu"><phrase id="tblcaption" value="menu"/>
+<field id="id_menu"><phrase id="fldcaption" value="id menu"/>
+</field>
+<field id="code"><phrase id="fldcaption" value="code"/>
+</field>
+<field id="label"><phrase id="fldcaption" value="label"/>
+</field>
+<field id="id_parent"><phrase id="fldcaption" value="id parent"/>
+</field>
+<field id="uri"><phrase id="fldcaption" value="uri"/>
+</field>
+<field id="col_module"><phrase id="fldcaption" value="col module"/>
+</field>
+<field id="col_controller"><phrase id="fldcaption" value="col controller"/>
+</field>
+<field id="col_action"><phrase id="fldcaption" value="col action"/>
+</field>
+<field id="css_class"><phrase id="fldcaption" value="css class"/>
+</field>
+<field id="id_resources"><phrase id="fldcaption" value="id resources"/>
+</field>
+<field id="privelege"><phrase id="fldcaption" value="privelege"/>
+</field>
+<field id="sort_order"><phrase id="fldcaption" value="sort order"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="scheduled_locks"><phrase id="tblcaption" value="scheduled locks"/>
+<field id="id_scheduled_locks"><phrase id="fldcaption" value="id scheduled locks"/>
+</field>
+<field id="id_catalog"><phrase id="fldcaption" value="id catalog"/>
+</field>
+<field id="start_time"><phrase id="fldcaption" value="start time"/>
+</field>
+<field id="id_users"><phrase id="fldcaption" value="id users"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="sites"><phrase id="tblcaption" value="sites"/>
+<field id="id_sites"><phrase id="fldcaption" value="id sites"/>
+</field>
+<field id="site_title"><phrase id="fldcaption" value="site title"/>
+</field>
+<field id="use_custom_fields"><phrase id="fldcaption" value="use custom fields"/>
+</field>
+<field id="custom_fields"><phrase id="fldcaption" value="custom fields"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="system_labels"><phrase id="tblcaption" value="system labels"/>
+<field id="system_labels_code"><phrase id="fldcaption" value="system labels code"/>
+</field>
+<field id="system_labels_text"><phrase id="fldcaption" value="system labels text"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="users"><phrase id="tblcaption" value="users"/>
+<field id="id_users"><phrase id="fldcaption" value="id users"/>
+</field>
+<field id="username"><phrase id="fldcaption" value="username"/>
+</field>
+<field id="hashed_password"><phrase id="fldcaption" value="hashed password"/>
+</field>
+<field id="firstname"><phrase id="fldcaption" value="firstname"/>
+</field>
+<field id="lastname"><phrase id="fldcaption" value="lastname"/>
+</field>
+<field id="_email"><phrase id="fldcaption" value="email"/>
+</field>
+<field id="phone"><phrase id="fldcaption" value="phone"/>
+</field>
+<field id="id_roles"><phrase id="fldcaption" value="id roles"/>
+</field>
+<field id="extra"><phrase id="fldcaption" value="extra"/>
+</field>
+<field id="use_custom_fields"><phrase id="fldcaption" value="use custom fields"/>
+</field>
+<field id="custom_fields"><phrase id="fldcaption" value="custom fields"/>
+</field>
+<field id="is_active"><phrase id="fldcaption" value="is active"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="values_blob"><phrase id="tblcaption" value="values blob"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+</table>
+<table id="values_datetime"><phrase id="tblcaption" value="values datetime"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+</table>
+<table id="values_file"><phrase id="tblcaption" value="values file"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="file_name"><phrase id="fldcaption" value="file name"/>
+</field>
+<field id="mime_type"><phrase id="fldcaption" value="mime type"/>
+</field>
+<field id="size"><phrase id="fldcaption" value="size"/>
+</field>
+</table>
+<table id="values_float"><phrase id="tblcaption" value="values float"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+</table>
+<table id="values_int"><phrase id="tblcaption" value="values int"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="values_select"><phrase id="tblcaption" value="values select"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="values_text"><phrase id="tblcaption" value="values text"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="values_varchar"><phrase id="tblcaption" value="values varchar"/>
+<field id="id_values"><phrase id="fldcaption" value="id values"/>
+</field>
+<field id="value"><phrase id="fldcaption" value="value"/>
+</field>
+<field id="created_by"><phrase id="fldcaption" value="created by"/>
+</field>
+<field id="created_on"><phrase id="fldcaption" value="created on"/>
+</field>
+<field id="updated_by"><phrase id="fldcaption" value="updated by"/>
+</field>
+<field id="updated_on"><phrase id="fldcaption" value="updated on"/>
+</field>
+<field id="is_deleted"><phrase id="fldcaption" value="is deleted"/>
+</field>
+</table>
+<table id="view1"><phrase id="tblcaption" value="View 1"/>
+<field id="create_month"><phrase id="fldcaption" value="Month"/>
+</field>
+<field id="count28129"><phrase id="fldcaption" value="Number of servers"/>
+</field>
+<field id="create_year"><phrase id="fldcaption" value="Year"/>
+</field>
+</table>
+<table id="customview1"><phrase id="tblcaption" value="Custom View 1"/>
+<field id="create_month"><phrase id="fldcaption" value="create month"/>
+</field>
+<field id="create_year"><phrase id="fldcaption" value="create year"/>
+</field>
+<field id="cumulative_sum"><phrase id="fldcaption" value="cumulative sum"/>
+</field>
+<field id="new_servers"><phrase id="fldcaption" value="new servers"/>
+</field>
+<field id="_40running_total_3a3d_0"><phrase id="fldcaption" value="@running total := 0"/>
+</field>
+<field id="date_format28t2ecreated_on2c2725y_25m2729"><phrase id="fldcaption" value="DATE FORMAT(t.created on,'% Y %m')"/>
+</field>
+</table>
+<table id="server_incriment_per_month"><phrase id="tblcaption" value="Server Incriment per month"/>
+<chart id="total_server_per_month"><phrase id="chartcaption" value="Total Server Per Month"/>
+<phrase id="chartxaxisname" value="Month"/>
+<phrase id="chartyaxisname" value="Total Servers"/>
+</chart>
+<chart id="incrimet_per_month"><phrase id="chartcaption" value="Incrimet Per Month"/>
+<phrase id="chartxaxisname" value="Month"/>
+<phrase id="chartyaxisname" value="new servers"/>
+</chart>
+<field id="create_month"><phrase id="fldcaption" value="Month"/>
+</field>
+<field id="create_year"><phrase id="fldcaption" value="Year"/>
+</field>
+<field id="cumulative_sum"><phrase id="fldcaption" value="Total Servers"/>
+</field>
+<field id="new_servers"><phrase id="fldcaption" value="new servers"/>
+</field>
+<field id="_40running_total_3a3d_0"><phrase id="fldcaption" value="@running total := 0"/>
+</field>
+<field id="date_format28t2ecreated_on2c2725y_25m2729"><phrase id="fldcaption" value="Month"/>
+</field>
+</table>
+</project>
+</ew-language>

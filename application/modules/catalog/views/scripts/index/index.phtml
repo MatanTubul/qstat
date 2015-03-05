@@ -1,0 +1,467 @@
+<?php
+if (! empty ( $this->isReport )) {
+	echo $this->filterForm;
+}
+if (! empty ( $this->extraJsCode )) {
+	?>
+	<script type="text/javascript">
+		<?php echo $this->extraJsCode; ?>
+	</script>
+	<?php
+}
+echo $this->objGrid;
+?>
+<div id="multiLockDiv" title="<?php echo $this->translate('LBL_CATALOG_FORM_MULTI_LOCK'); ?>">&nbsp;</div>
+<div id="formDiv" title="<?php echo $this->translate('LBL_CATALOG_FORM_TITLE'); ?>">&nbsp;</div>
+<div id="entTypeDiv" title="<?php echo $this->translate('LBL_CATALOG_ENT_TYPE_SELECT'); ?>">&nbsp;</div>
+<div id="entTypeDivMulti" title="<?php echo $this->translate('LBL_CATALOG_ENT_TYPE_SELECT'); ?>">&nbsp;</div>
+<div id="moveDiv" title="<?php echo $this->translate('LBL_CATALOG_MOVE'); ?>">
+	<?php include 'move-form.phtml';?>
+</div>
+<div id="litDiv"></div>
+<?php echo $this->saveElementJs($this); ?>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	function installOs(ip,cat_id){
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-ips-to-install'), null, true ); ?>';
+		var selectedRow = jQuery('#Catalog').jqGrid('getGridParam','selrow');
+		if (selectedRow) {
+			selectedRows = jQuery('#Catalog').jqGrid('getGridParam','selarrrow').join(',');
+		} else {
+			selectedRows=cat_id;
+		}
+
+		$.post(url, {
+			"cat_ids": selectedRows
+			}, function(data){
+				$("#litDiv").html(data);
+				$("#litDiv").dialog("open");
+		}).error(function() { alert("server error");});
+	}
+
+	function power(ip,catId){
+		window.open("/catalog/index/redirect-to-server-reboot/ip/"+ip+"/cat_id/"+catId);
+	}
+
+	$("#litDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		title: '<?php echo $this->translate("LBL_LIST_OF_SERVERS_TO_BE_INSTALL"); ?>',
+		buttons: {
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM_CANCEL' ); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	var currentParent = <?php echo $this->intParent; ?>;
+	var elemsForTip = $('.item-locked');
+
+	function addRow(boolIsFolder){
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-ent-selector'), null, true ); ?>';
+
+		var params = {};
+		params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>']		= boolIsFolder ? 1 :0;
+
+		$('#entTypeDiv').load(url,params,function (){
+			$('#entTypeDiv').dialog( "open" );
+		});
+	}
+
+	function delMulti() {
+		var selectedRow = jQuery('#Catalog').jqGrid('getGridParam','selrow');
+		if (selectedRow) {
+			var selectedRows = jQuery('#Catalog').jqGrid('getGridParam','selarrrow');
+			if (confirm("<?php echo $this->translate("MSG_DELETE_CONFIRMATION");?>")) {
+				var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'del'), null, true ); ?>';
+
+				$.post(url, {
+					"cat_ids": selectedRows
+					}, function(data){
+
+						if (data.code=="OK"){
+							alert("<?php echo $this->translate("MSG_UPDATED_SUCCESSFUL");?>")
+							$('#Catalog').trigger("reloadGrid");
+						}else{
+							alert("<?php echo $this->translate("MSG_UPDATED_ERROR");?>")
+
+						}
+					},'json').error(function() { alert("server error");});
+			}
+		} else {
+			alert ('No Row Selected!');
+			return;
+		}
+	}
+
+	function editMulti() {
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-ent-selector'), null, true ); ?>';
+
+		var params = {};
+		params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>']	= 0;
+
+		$('#entTypeDivMulti').load(url,params,function (){
+			$('#entTypeDivMulti').dialog( "open" );
+		});
+	}
+
+	// For Move Form.
+	var refreshGrid = 'Catalog';
+	var selectedRows;
+
+	function moveItem() {
+		var selectedRow = jQuery('#Catalog').jqGrid('getGridParam','selrow');
+		if (selectedRow) {
+			selectedRows = jQuery('#Catalog').jqGrid('getGridParam','selarrrow');
+			$('#cat_ids').val(selectedRows.join(','));
+		} else {
+			alert ('No Row Selected!');
+			return;
+		}
+
+		$('#moveFormDiv').dialog( "open" );
+	}
+
+	$("#entTypeDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM' ); ?>": function() {
+				var boolNewForm = 1==parseInt($('#is_new_form').val());
+				var boolIsFolder = 1==parseInt($('#<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>').val());
+				var intEntTypeId = $('#<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>').val();
+
+				getForm(boolNewForm,boolIsFolder, intEntTypeId);
+				$( this ).dialog( "close" );
+			},
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM_CANCEL' ); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	$("#entTypeDivMulti").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM' ); ?>": function() {
+				var selectedRow = jQuery('#Catalog').jqGrid('getGridParam','selarrrow');
+				var intEntTypeId = $('#<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>').val();
+				var params = {};
+				params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_PARENT;?>']  	= currentParent;
+				params['<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>']	= intEntTypeId;
+				params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>']		= 0;
+				params['catalog_ids']		= selectedRow.join(',');
+
+				var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'edit-multi'), null, true ); ?>';
+				document.location.href = url +'?'+ decodeURIComponent($.param(params));
+				$( this ).dialog( "close" );
+			},
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM_CANCEL' ); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	$("#entTypeDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM' ); ?>": function() {
+				var boolNewForm = 1==parseInt($('#is_new_form').val());
+				var boolIsFolder = 1==parseInt($('#<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>').val());
+				var intEntTypeId = $('#<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>').val();
+				getForm(boolNewForm,boolIsFolder, intEntTypeId);
+
+				$( this ).dialog( "close" );
+			},
+			"<?php echo $this->translate ( 'LBL_BTN_GET_FORM_CANCEL' ); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	function getForm(boolNewForm,boolIsFolder, intEntTypeId){
+		var catalogId = 0;
+		var params = {};
+		if (!boolNewForm) {
+			var selectedRow = jQuery('#Catalog').jqGrid('getGridParam','selrow');
+			if (selectedRow) {
+				var selectedRowData = jQuery('#Catalog').jqGrid('getRowData',selectedRow);
+				catalogId = selectedRowData['<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG;?>'];
+				boolIsFolder = selectedRowData['<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>'] == 1;
+			} else {
+				alert ('No Row Selected!');
+				return;
+			}
+			var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'edit'), null, true ); ?>';
+
+			params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG;?>'] 	= catalogId;
+		} else {
+			var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'add'), null, true ); ?>';
+
+			params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_PARENT;?>']  	= currentParent;
+			params['<?php echo Bf_Eav_Db_EntitiesTypes::COL_ID_ENTITIES_TYPES;?>']	= intEntTypeId;
+			params['<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>']		= boolIsFolder ? 1 :0;
+		}
+
+		var usePopup = false;
+
+		if ( ( boolIsFolder && <?php echo $this->options->editFolder->popup ? 'true' : 'false'; ?> ) || ( ! boolIsFolder && <?php echo $this->options->editItem->popup ? 'true' : 'false'; ?> ) ) {
+			usePopup = true;
+		}
+
+		if (usePopup) {
+			var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-form'), null, true ); ?>';
+			$('#formDiv').load(url,params,function (){ $('#formDiv').dialog( "open" ); });
+		} else {
+			document.location.href = url +'?'+ decodeURIComponent($.param(params));
+		}
+	}
+
+	$("#formDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php echo $this->translate ( 'LBL_BTN_FORM_SAVE' ); ?>": saveForm,
+			"<?php echo $this->translate ( 'LBL_BTN_FORM_CANCEL' ); ?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	function catalogCall(rowId) {
+		var boolIsFolder = (1== parseInt($('#Catalog').jqGrid('getCell',rowId,'<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>')));
+
+		if (boolIsFolder) {
+			//Folder
+			var isParent = parseInt($('#Catalog').jqGrid('getCell',rowId,'<?php echo Bf_Catalog_Models_Catalog::COL_PARENT_FLAG;?>'));
+
+			if (isParent>0) {
+				var parentId = parseInt($('#Catalog').jqGrid('getCell',rowId,'<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_PARENT;?>'));
+				$('#Catalog').jqGrid('setGridParam',{'url':'<?php echo $this->url(array('module'=>'catalog','controller' => 'index' , 'action'=> 'index' ),null, true)?>?<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_PARENT?>='+parentId});
+				currentParent = parentId;
+			} else {
+				$('#Catalog').jqGrid('setGridParam',{'url':'<?php echo $this->url(array('module'=>'catalog','controller' => 'index' , 'action'=> 'index' ),null, true)?>?<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_PARENT?>='+rowId});
+				currentParent = rowId;
+			}
+			$('#Catalog').trigger("reloadGrid");
+		} else {
+			var newTabOpened = window.open(
+				'<?php echo $this->url(array('module'=>'catalog','controller' => 'index' , 'action'=> 'view' ),null, true)?>?<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG?>='+rowId,
+				'_blank'
+			);
+			newTabOpened.focus();
+		}
+	}
+
+	function iconFormatter ( cellvalue, options, rowObject ) {
+		var grid = $('#'+options.gid);
+		var p = grid.jqGrid('getGridParam','colModel');
+
+		var colId = 0;
+
+		$.each(p, function(index, value) {
+			if (value.name == '<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_FOLDER;?>') {
+				colIsFolder = index-1;
+			} else if (value.name == '<?php echo Bf_Catalog_Models_Db_Catalog::COL_IS_LOCKED;?>') {
+				colIsLocked = index-1;
+			} else if (value.name == '<?php echo Bf_Catalog_Models_Db_Catalog::COL_HAS_CHILDREN;?>') {
+				colHasChildren = index-1;
+			} else if (value.name == '<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG;?>') {
+				colIdCatalog = index-1;
+			}
+
+		});
+
+		var boolIsFolder = (1 == parseInt(rowObject[colIsFolder]));
+		var boolIsLocked = (1 == parseInt(rowObject[colIsLocked]));
+		var boolHasChildren = (0 < parseInt(rowObject[colHasChildren]));
+		var intIdCatalog = parseInt(rowObject[colIdCatalog]);
+		var returnValue = null;
+
+		if (!boolIsFolder) {
+			//item
+			returnValue = '<span class="grid-icon ui-icon ui-icon-document" title="'+intIdCatalog+'">'+intIdCatalog+'</span>';
+			if (boolIsLocked) {
+				returnValue += '<span class="grid-icon ui-icon ui-icon-locked item-locked" lockId="'+intIdCatalog+'"><?php echo $this->translate('LBL_ICON_LOCKED');?></span>';
+			}
+		} else if (cellvalue > 0) {
+			//parent
+			returnValue = '<span class="grid-icon ui-icon ui-icon-triangle-1-n" title="'+intIdCatalog+'"><?php echo $this->translate('LBL_ICON_PARENT');?></span>';
+		} else {
+			//Folder
+			returnValue = '<span class="grid-icon ui-icon ui-icon-folder-collapsed" title="'+intIdCatalog+'">'+intIdCatalog+'</span>';
+			if (boolHasChildren) {
+				returnValue += '<span class="grid-icon ui-icon ui-icon-pin-s"><?php echo $this->translate('LBL_ICON_HAS_CHILDREN');?></span>';
+			}
+			if (boolIsLocked) {
+				returnValue += '<span class="grid-icon ui-icon ui-icon-locked"><?php echo $this->translate('LBL_ICON_LOCKED');?></span>';
+			}
+		}
+
+		returnValue += '<span class=".clear"></span>';
+
+		return returnValue;
+	}
+
+	function attach_tooltip() {
+		<?php
+		if ( User_Model_Acl::$objIntance->checkPermissions( 'catalog', 'lock', 'item-locks' ) ) {
+			?>
+			$('<div />').qtip(
+				{
+					content: ' ', // Can use any content here :)
+					position: {
+						target: 'event', // Use the triggering element as the positioning target
+						effect: false   // Disable default 'slide' positioning animation
+					},
+					show: {
+						target: elemsForTip
+					},
+					hide: {
+						target: elemsForTip
+					},
+					events: {
+						show: function(event, api) {
+							// Update the content of the tooltip on each show
+							var target = $(event.originalEvent.target);
+
+							if (target.length) {
+								api.set('content.text', '<span id="tooltip" class="loading">Loading...</span>');
+								var params = {};
+								params['<?php echo Qstat_Db_Table_Lock::COL_ID_CATALOG;?>'] = parseInt(target.attr('lockId'));
+								params['popup']= 1;
+
+								api.set('content.ajax.data',params);
+								api.set('content.ajax.url', '<?php echo $this->url( array( 'module'=>'catalog', 'controller' => 'lock', 'action' => 'item-locks' ), null, true ); ?>');
+							}
+						}
+					}
+			});
+			<?php
+		}
+		?>
+	}
+
+	attach_tooltip();
+
+	function multiLock(is_reload) {
+		is_reload = is_reload || 0;
+
+		var selectedRow = $('#Catalog').jqGrid('getGridParam', 'selrow');
+		if ( ! selectedRow) {
+			alert ('No Row Selected!');
+			return;
+		}
+
+		var selectedRows = $('#Catalog').jqGrid('getGridParam','selarrrow');
+		var url = '<?php echo $this->url( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-lock-details'), null, true ); ?>';
+		$('#multiLockDiv').load(url, {"cat_ids": selectedRows}, function() {
+			$('#multiLockDiv').dialog( "open" );
+
+			if (is_reload) {
+				window.location.reload(true);
+			}
+		});
+	}
+
+	$("#multiLockDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		open: function(event, ui) {
+			if ( $(this).find( $("#<?php echo Qstat_Db_Table_Lock::COL_LOCK_SCHEDULED_UNLOCK; ?>") ).length ) {
+				$("#<?php echo Qstat_Db_Table_Lock::COL_LOCK_SCHEDULED_UNLOCK; ?>")
+				.datetimepicker({
+					dateFormat: "yy-mm-dd"
+				})
+				.blur();
+			}
+		},
+		buttons: {
+			"<?php echo $this->translate ( 'LBL_BTN_FORM_CANCEL' );	?>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	function release_lock(params) {
+		$('#multiLockDiv').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+
+		var url = '<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'release-lock'), null, true ); ?>';
+
+		$.post(url, { params: params }, function(response) {
+			if ( ! ( response == '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK; ?>' ) ) {
+				alert( response );
+			}
+
+			multiLock(1);
+		});
+	}
+
+	function create_lock(catalog_id, scheduled_unlock_time ) {
+		scheduled_unlock_time = scheduled_unlock_time || '';
+
+		$('#multiLockDiv').html( '<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>' );
+
+		var url = '<?php echo $this->url( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'create-lock'), null, true ); ?>';
+
+		var params = {};
+		params[ '<?php echo Qstat_Db_Table_Lock::COL_ID_CATALOG; ?>' ] = catalog_id;
+		params[ '<?php echo Qstat_Db_Table_Lock::COL_LOCK_SCHEDULED_UNLOCK; ?>' ] = scheduled_unlock_time;
+
+		$.post(url, params, function(response) {
+			if ( ! ( response === '<?php echo Ingot_JQuery_JqGrid::RETURN_CODE_OK; ?>') ) {
+				alert( response );
+			}
+
+			multiLock(1);
+		});
+	}
+
+	function calculateColumnsWidth(grid, rowid, rowdata, rowelem) {
+		var columnsWidthsValues = $(grid).getGridParam("columnsWidths");
+
+		$("#" + rowid)
+		.children("td")
+		.each(function( index ) {
+			if ( $(this).is(':hidden') ) {
+				return;
+			}
+
+			if ( typeof columnsWidthsValues[index] !== "undefined" && typeof columnsWidthsValues[index].width === "number" && this.scrollWidth < columnsWidthsValues[index].width ) {
+				return;
+			}
+
+			columnsWidthsValues[index] = { width: this.scrollWidth, aria_describedby: $(this).attr("aria-describedby") };
+		});
+	}
+
+	function adjustColumnsWidth(grid) {
+		var columnsWidthsValues = $(grid).getGridParam("columnsWidths");
+
+		$(grid)
+		.find("tr.jqgfirstrow td")
+		.each(function( index ) {
+			if ( typeof columnsWidthsValues[index] === "undefined" || typeof columnsWidthsValues[index].width !== "number" ) {
+				return;
+			}
+
+			$(this).width( columnsWidthsValues[index].width );
+			$( "#" + columnsWidthsValues[index].aria_describedby ).width( columnsWidthsValues[index].width );
+		});
+	}
+	/*]]>*/
+</script>

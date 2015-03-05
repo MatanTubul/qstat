@@ -1,0 +1,16 @@
+<?php
+
+$e = rand(0,5);
+for ($k = 0; $k< $e; $k++ ) {
+	$i = rand(0,1000);
+	$array[] = array(
+		'data'=>'Opt '.$i,
+		'attr' => 
+			array(
+				'id_parent' => $i,
+				'class' => 'test'
+			),
+		'state' => 'closed',
+		);
+}
+echo $this->json($array);

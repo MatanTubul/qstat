@@ -1,0 +1,185 @@
+<?php
+
+echo $this->saveElementJs($this);
+include 'move-form.phtml';
+echo $this->Actions();
+
+if ( User_Model_Acl::$objIntance->checkPermissions('catalog', 'lock', 'item-locks') ) {
+	?>
+	<fieldset id="locksDataFieldset">
+		<legend>Locks</legend>
+		<div id="locksData">
+			<div class="loading">
+				<?php echo $this->translate('LBL_LOADING')?>
+			</div>
+		</div>
+	</fieldset>
+
+	<script type="text/javascript">
+		function load_locks() {
+			$('#locksData').html('<div class="loading"><?php echo $this->translate('LBL_PLEASE_WAIT')?></div>');
+			var url = '<?php echo $this->url( array ('module' => 'catalog', 'controller' => 'lock', 'action' => 'item-locks'), null, true ); ?>';
+
+			var params = {};
+			params['<?php echo Qstat_Db_Table_Lock::COL_ID_CATALOG; ?>'] = "<?php echo $this->intCatalogId; ?>";
+			params["catalog_ids"] = "<?php echo $this->intCatalogIds; ?>";
+
+			$('#locksData').load(url, params);
+		}
+
+		load_locks();
+	</script>
+	<?php
+}
+
+foreach ($this->arrForms as $objForm) {
+	echo $objForm;
+}
+
+echo $this->Actions();
+?>
+
+<div id="formDiv" title="Eav Attr Form Title">&nbsp;</div>
+
+<script>
+	function addAttrib(){
+		var url = '/eav/index/get-attr-selector/1/1';
+
+		var params = {};
+
+		$('#attrTypeDiv').load(url,params,function (){
+			$('#attrTypeDiv').dialog( "open" );
+		});
+	}
+
+	$("#attrTypeDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"Enter": function() {
+				var mixAttrTypeId = $('#value_type').val();
+
+				getForm(true,mixAttrTypeId);
+
+				$( this ).dialog( "close" );
+			},
+			"Cancel": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	var attribId_edit;
+
+	function getForm(boolNewForm, mixAttrTypeId , attribId) {
+		if ( ! boolNewForm) {
+			var selectedRow = 33;
+			if (selectedRow) {
+				var selectedRowData = "";
+				mixAttrTypeId = "select";
+			} else {
+				alert ('No Row Selected!');
+				return;
+			}
+		}
+
+		var url = '/eav/index/get-attr-form/1/1/?o=1';
+		var params = {};
+		attribId_edit = attribId;
+		params['id_attributes'] 	= attribId;
+		params['value_type']	= mixAttrTypeId;
+
+		$('#formDiv').load(url, params, function() {
+			$('#formDiv').dialog( "open" );
+		});
+	}
+
+	function refreshSList()
+	{
+		$select = $("a[edit="+attribId_edit+"]").parent().parent().find("select").first()
+		$first_option = $select.find("option").first().clone();
+		$select.find("option").remove();
+		$select.append($first_option)
+
+		$("#Groups tr").each(function()
+			{
+				$val = $(this).find("[aria-describedby='Groups_value']").html();
+				$key = $(this).attr("id");
+
+				if ($key)
+				{
+					$select.append('<option value="'+$key+'" label="'+$val+'">'+$val+'</option>')
+				}
+		})
+
+	}
+
+	$("#formDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"Save": function() {
+				var formSerializeData = $('#attrForm').serialize();
+
+				$.post('/eav/index/save-attr/1/1', formSerializeData, function(data, textStatus) {
+					// data contains the JSON object
+					// textStatus contains the status: success, error, etc .
+					if (data.msg !== ''){
+						$.jGrowl(data.msg);
+					}
+
+					$('input').parent().find('.errors').remove();
+
+					if (data.error_msg !== ''){
+
+						$.each(data.error_msg,function(element,arrData){
+							var o = '<ul class="errors">';
+							$.each(arrData,function(key,value){
+								o+='<li>'+ value+'</li>';
+							});
+							o+='</ul>';
+
+							$('#'+element).parent().append(o);
+
+						});
+					}
+
+					if (data.code == 'ok'){
+						$('#AllAttributes').trigger("reloadGrid");
+						$("#formDiv").dialog( "close" );
+					}
+
+					refreshSList();
+
+					}, "json");
+			},
+			"Cancel": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	function checkUniqueAttr(value, colname){
+		var boolParam = false;
+
+		$.ajax({
+			url: '/eav/index/check-unique-attr-code',
+			dataType: 'json',
+			data: 'AttrCode='+value,
+			async: false,
+			success: function(data) {
+				boolParam = data;
+			}
+		});
+
+		if (boolParam)
+			return [true,""];
+		else
+			return [false,"Eav Attr Code Exist"];
+
+	}
+</script>

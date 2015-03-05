@@ -1,0 +1,134 @@
+<?php
+echo $this->objGrid;
+?>
+<div id="formDiv" 	  title="<?php echo $this->translate('LBL_EAV_ATTR_FORM_TITLE');?>">&nbsp;</div>
+<div id="attrTypeDiv" title="<?php echo $this->translate('LBL_EAV_ATTR_TYPE_SELECT');?>">&nbsp;</div>
+
+<script type="text/javascript">
+	function addAttrib(){
+		var url = '<?php echo $this->url( array( 'module' => 'eav', 'controller' => 'index', 'action' => 'get-attr-selector', null, true, ) ); ?>';
+
+		var params = {};
+
+		$('#attrTypeDiv').load(url, params, function(){
+			$('#attrTypeDiv').dialog( "open" );
+		});
+	}
+
+	$("#attrTypeDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php
+			echo $this->translate('LBL_BTN_GET_FORM');
+			?>": function() {
+
+			var mixAttrTypeId = $('#<?php echo Bf_Eav_Db_Attributes::COL_VALUE_TYPE; ?>').val();
+
+			getForm(true,mixAttrTypeId);
+
+			$( this ).dialog( "close" );
+		},
+		"<?php
+		echo $this->translate('LBL_BTN_GET_FORM_CANCEL');
+		?>": function() {
+		$( this ).dialog( "close" );
+		}
+		}
+	});
+
+	function getForm(boolNewForm, mixAttrTypeId){
+		var attribId = 0;
+
+		if (!boolNewForm) {
+			var selectedRow = jQuery('#AllAttributes').jqGrid('getGridParam','selrow');
+
+			if (selectedRow) {
+				var selectedRowData = jQuery('#AllAttributes').jqGrid('getRowData',selectedRow);
+				attribId = selectedRow;
+				mixAttrTypeId = selectedRowData['<?php echo Bf_Eav_Db_Attributes::COL_VALUE_TYPE; ?>'];
+			} else {
+				alert ('No Row Selected!');
+				return;
+			}
+		}
+
+		var url = '<?php echo $this->url ( array ('module' => 'eav', 'controller' => 'index', 'action' => 'get-attr-form', null, true )); ?>';
+
+		var params = {};
+		params['<?php echo Bf_Eav_Db_Attributes::COL_ID_ATTR; ?>'] = attribId;
+		params['<?php echo Bf_Eav_Db_Attributes::COL_VALUE_TYPE; ?>'] = mixAttrTypeId;
+
+		$('#formDiv').load( url, params, function(){ $('#formDiv').dialog( "open" ); } );
+	}
+
+	$("#formDiv").dialog({
+		autoOpen: false,
+		height: 'auto',
+		width: 'auto',
+		modal: true,
+		buttons: {
+			"<?php
+			echo $this->translate('LBL_BTN_FORM_SAVE');
+			?>": function() {
+
+			var formSerializeData = $('#attrForm').serialize();
+
+			$.post('<?php echo $this->url ( array ('module' => 'eav', 'controller' => 'index', 'action' => 'save-attr', null, true )); ?>', formSerializeData, function(data, textStatus) {
+				//data contains the JSON object
+				//textStatus contains the status: success, error, etc
+				if (data.msg !== ''){
+				$.jGrowl(data.msg);
+			}
+
+			$('input').parent().find('.errors').remove();
+
+			if (data.error_msg !== ''){
+
+			$.each(data.error_msg,function(element,arrData){
+				var o = '<ul class="errors">';
+				$.each(arrData,function(key,value){
+					o+='<li>'+ value+'</li>';
+				});
+				o+='</ul>';
+
+				$('#'+element).parent().append(o);
+
+			});
+			}
+
+			if (data.code == 'ok'){
+				$('#AllAttributes').trigger("reloadGrid");
+				$("#formDiv").dialog( "close" );
+			}
+			}, "json");
+		},
+		"<?php
+		echo $this->translate('LBL_BTN_FORM_CANCEL');
+		?>": function() {
+		$( this ).dialog( "close" );
+		}
+		}
+	});
+
+	function checkUniqueAttr(value, colname){
+		var boolParam = false;
+
+		$.ajax({
+			url: '<?php echo $this->url(array('module' => 'eav', 'controller' => 'index', 'action' => 'check-unique-attr-code')); ?>',
+			dataType: 'json',
+			data: 'AttrCode='+value,
+			async: false,
+			success: function(data) {
+				boolParam = data;
+			}
+		});
+
+		if (boolParam)
+			return [true,""];
+		else
+			return [false,"<?php echo $this->translate('LBL_EAV_ATTR_CODE_EXIST');?>"];
+	}
+</script>

@@ -1,0 +1,138 @@
+<script type="text/javascript" src="/js/jquery.jstree.js"></script>
+<script type="text/javascript" src="/js/jquery.jstree.plugin.radio.js"></script>
+
+<div id="moveFormDiv" title="<?php echo $this->translate('LBL_CATALOG_MOVE_FORM_TITLE');?>">
+	<form name="CatalogMove" id="CatalogMove" method="post" enctype="application/x-www-form-urlencoded">
+		<input id="<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG?>" name="<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG?>" type="hidden" value="<?php echo $this->intCatalogId;?>">
+		<input id="cat_ids" name="cat_ids" type="hidden" value="0">
+		<input id="target_cat_id" name="target_cat_id" type="hidden" value="">
+		<div id="catalogTree"></div>
+	</form>
+</div>
+<script type=" text/javascript">
+<!--
+function parseCatId(id_cat) {
+	var prefix = "<?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_CATALOG."_";?>";
+	if ('CAT_ROOT' == id_cat) {
+		id_cat = -1;
+	} else {
+		id_cat = parseInt(id_cat.substring(prefix.length));
+	}	
+	return 	id_cat;
+}
+
+$(function () {
+	$("#catalogTree").jstree({ 
+		"json_data" : {
+			"ajax" : {
+				"url" : "<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'get-tree-data'), null, true ); ?>",
+				"data" : function (n) {
+					return { <?php echo Bf_Catalog_Models_Db_Catalog::COL_ID_PARENT; ?> : n.attr ? parseCatId(n.attr("id")) : 0 }; 
+				}
+			}
+		},
+		"themes" : {
+			"theme" : "default",
+			"url" : "/css/default/style.css",
+			"dots" : false,
+			"icons" : false
+		},
+		"checkbox" : {
+			"two_state" : true,
+			"multiple_selection" : false
+
+		},
+        "radio": {
+            "empty_selection": true,
+			"override_ui" : true
+        },
+		"core": {
+			"initially_open" : "CAT_ROOT"
+		},
+		"plugins" : [ "themes", "json_data", "radio", "ui", "types" ]
+	});
+});
+
+
+
+function move() {
+
+	$('#moveFormDiv').dialog( "open" );
+	return;
+
+}
+
+$("#moveFormDiv").dialog({
+	autoOpen: false,
+	height: 'auto',
+	width: 'auto',
+	modal: true,
+	buttons: {
+		"<?php
+		echo $this->translate('LBL_BTN_CATALOG_MOVE');
+		?>": function() {
+
+		
+        var checked_ids = []; 
+		
+        $( "#catalogTree" ).jstree("get_checked",null,true).each 
+            (function () { 
+                checked_ids.push(parseCatId(this.id));
+            });
+
+		if (checked_ids.length > 0) {
+			$("#target_cat_id").val(checked_ids[0]);
+		} else {
+			alert("<?php echo $this->translate('LBL_ALERT_SELECT_TARGET_FOLDER');?>");
+			return false;
+		}
+	
+		if (!confirm('<?php echo $this->translate('LBL_ARE_YOU_SURE_YOU_WANT_TO_MOVE_THIS_ITEM');?>')) {
+			return false;
+		}
+		formData = $('#CatalogMove').serialize();
+		$( "#catalogTree" ).jstree('refresh');
+		$( this ).dialog( "close" );
+		$.post('<?php echo $this->url ( array ('module' => 'catalog', 'controller' => 'index', 'action' => 'move'), null, true ); ?>', formData, function(data, textStatus) {
+			  //data contains the JSON object
+			  //textStatus contains the status: success, error, etc
+				if (data.msg !== ''){
+					$.jGrowl(data.msg);
+				}
+				
+				$('input').parent().find('.errors').remove();
+
+				if (data.error_msg !== ''){
+
+			        $.each(data.error_msg,function(element,arrData){
+					        var o = '<ul class="errors">';
+					        $.each(arrData,function(key,value){
+					            o+='<li>'+ value+'</li>';
+					        });
+					        o+='</ul>';
+
+			                $('#'+element).parent().append(o);
+					    
+			        });
+				}
+				
+				if (data.code == 'ok'){
+					alert('<?php echo $this->translate('LBL_ITEM_MOVED_SUCCEFULLY');?>');
+
+					if (refreshGrid) {
+						$('#'+refreshGrid).trigger("reloadGrid");
+					}
+
+				}	
+			}, "json");
+
+		},
+		"<?php
+		echo $this->translate('LBL_BTN_GET_FORM_CANCEL');
+		?>": function() {
+			$( this ).dialog( "close" );
+		}
+	}
+});
+//-->
+</script>

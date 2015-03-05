@@ -1,0 +1,64 @@
+<label for="locksbyusage_from_datepicker">From</label>
+<input type="text" id="locksbyusage_from_datepicker" name="from">
+
+<label for="locksbyusage_to_datepicker">to</label>
+<input type="text" id="locksbyusage_to_datepicker" name="to" value="<?php echo date("Y-m-d"); ?>">
+
+<ul id="report_locksbyusage_percentage" class="report_locksbyusage_dropdown">
+	<li>
+		<span class="top">Percentage</span>
+		<ul class="drop">
+			<?php
+			foreach ($this->usage_persents as $persent) {
+				?>
+				<li>
+					<span data-usage-persent="<?php echo $persent; ?>">
+						<?php
+						echo $persent.'%';
+						?>
+					</span>
+				</li>
+				<?php
+			}
+			?>
+		</ul>
+	</li>
+</ul>
+
+<div><span>Group Name: </span><span></span></div>
+
+<ul id="report_locksbyusage_groups" class="report_locksbyusage_dropdown">
+	<li>
+		<span class="top">Groups</span>
+		<ul class="drop">
+			<?php
+			foreach ($this->groups as $group) {
+				if (empty($group['groups_name'])) {
+					continue;
+				}
+				?>
+				<li>
+					<span data-id-groups="<?php echo $group['id_groups']; ?>">
+						<?php
+						echo $group['groups_name'];
+						?>
+					</span>
+				</li>
+				<?php
+			}
+			?>
+			<li style="height: 50px;"></li>
+		</ul>
+	</li>
+</ul>
+
+<div id="report_locksbyusage_charts"></div>
+
+<p>Percent of allocated time according to the period selected</p>
+
+<div id="locks_by_usage_template">
+	<div class="report_locksbyusage_content">
+		<div></div><div></div>
+	</div>
+</div>
+<div id="report_locksbyusage_ajax_loading" class="loading">Loading...</div>

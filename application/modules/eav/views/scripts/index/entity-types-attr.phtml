@@ -1,0 +1,111 @@
+<?php
+echo $this->Actions();
+echo $this->objGrid;
+echo $this->Actions();
+
+echo "<div id='allAttribGrid'>";
+echo $this->objAllAttribGrid;
+echo "<div>";
+
+echo "<div id='groupSelectForm'>";
+echo $this->objGroupForm;
+echo "<div>";
+
+?>
+<script type="text/javascript">
+function checkUniqueAttr(value, colname){
+	var boolParam = false;
+
+	$.ajax({
+		  url: '<?php echo $this->url(array('module'=>'eav','controller'=>'index','action'=>'check-unique-attr-code'));?>',
+		  dataType: 'json',
+		  data: 'AttrCode='+value,
+		  async: false,
+		  success: function(data) {
+				boolParam = data;
+		    }
+		});
+	
+	if (boolParam) 
+      return [true,""];
+	else
+ 		return [false,"<?php echo $this->translate('LBL_EAV_ATTR_CODE_EXIST');?>"];
+	  
+}
+
+
+function checkUniqueAttrGroup(strFrmSubmit){
+	var boolParam = false;
+
+	$.ajax({
+		  url: '<?php echo $this->url(array('module'=>'eav','controller'=>'index','action'=>'check-unique-attr-group-code'));?>',
+		  dataType: 'json',
+		  data: strFrmSubmit,
+		  async: false,
+		  success: function(data) {
+				boolParam = data;
+		    }
+		});
+	
+	if (boolParam) {
+      	return true;
+	} else {
+		$.jGrowl('<?php echo $this->translate('LBL_EAV_ATTR_GRP_CODE_EXIST');?>');
+ 		return false;
+	}	  
+}
+
+function addAttrib(rowId, GroupId){
+	$('#<?php echo Bf_Eav_Db_GroupAttributes::COL_ID_ATTR; ?>').val(rowId);
+	$("#groupSelectForm").dialog('open');
+
+}
+
+$("#groupSelectForm").dialog({
+	autoOpen: false,
+	height: 'auto',
+	width: 'auto',
+	modal: true,
+	buttons: {
+		"<?php
+		echo $this->translate('LBL_BTN_FOLDER_FORM_SAVE');
+		?>": function() {
+
+		var formSerializeData = $('#<?php echo $this->objGroupForm->getAttrib("id");?>').serialize() + '&oper=add&grid=Attributes';
+		if (checkUniqueAttrGroup(formSerializeData)) {
+
+		// Save Meeting Data
+		$.post('<?php echo $this->url ( array ('module' => 'eav', 'controller' => 'index', 'action' => 'save-group-attrib', null, true )); ?>', formSerializeData, function(data, textStatus) {
+			  //data contains the JSON object
+			  //textStatus contains the status: success, error, etc
+				if (data.msg !== ''){
+					$.jGrowl(data.msg);
+				}
+				if (data.code == 'ok'){
+					$('#Attributes').trigger("reloadGrid"); 
+					$("#dialogAllExp").dialog( "close" );
+					$("#allAttribGrid").dialog( "close" );
+				}	
+			}, "json");	
+		
+							
+			$( this ).dialog( "close" );
+		}
+		},
+		"<?php
+		echo $this->translate('LBL_BTN_FOLDER_FORM_CANCEL');
+		?>": function() {
+			$( this ).dialog( "close" );
+		}
+	}
+});
+
+
+$("#allAttribGrid").dialog({
+	autoOpen: false,
+	height: 'auto',
+	width: 'auto',
+	modal: true	
+});
+
+</script>

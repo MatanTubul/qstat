@@ -1,0 +1,101 @@
+<h1><?php echo $this->strTitle;?></h1>
+<style type="text/css">
+	.column { width: 200px; float: left; padding-bottom: 25px; border-radius: 5px;}
+	.portlet { margin: 0 1em 1em 0; }
+	.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+	.portlet-header .ui-icon { float: right; }
+	.portlet-content { padding: 0.4em; display:none; }
+	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+	.ui-sortable-placeholder * { visibility: hidden; }
+	.portlet-content li {
+		list-style-type: none;
+		}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$( ".column" ).sortable({
+			connectWith: ".column",
+			items: "div.portlet:not(.ui-priority-secondary)"
+		});
+
+		$( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+			.find( ".portlet-header" )
+				.addClass( "ui-widget-header ui-corner-all" )
+				.prepend( "<span class='ui-icon ui-icon-plusthick'></span>")
+				.end()
+			.find( ".portlet-content" );
+
+		$( ".portlet-header .ui-icon" ).click(function() {
+			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+		});
+
+		$( ".column" ).disableSelection();
+	});
+</script>
+<?php
+//	echo "<pre>".print_r($_POST,true)."</pre>";
+?>
+<form method="post">
+<?php
+$objDbTable = $this->objDbTable;
+$objDataRow = $this->objDataRow;
+$intRowId = $this->intRowId;
+
+?>
+<input type="hidden" name="rowId" value="<?php echo $intRowId?>" />
+<input type="hidden" name="object" value="<?php echo $objDbTable::TBL_NAME ?>" />
+Use custom columns:<select name="<?php echo $objDbTable::COL_USE_CUSTOM_COLUMNS;?>">
+<option value="0">No</option>
+<option value="1"<?php echo (!empty($objDataRow->{$objDbTable::COL_USE_CUSTOM_COLUMNS}))?' selected="selected"':'';?>>Yes</option>
+</select>
+<button type="submit">Submit</button><br />
+<fieldset class="column" style="padding-bottom: 10px;">
+	<legend>Static Fields</legend>
+	<div class="portlet ui-priority-secondary">
+		<div class="portlet-header">Icons</div>
+<!-- 		<div class="portlet-content">Status Icons</div> -->
+	</div>
+	<div class="portlet ui-priority-secondary">
+		<div class="portlet-header">Title</div>
+	<!-- 	<div class="portlet-content">Status Icons</div> -->
+	</div>
+	<div class="portlet ui-priority-secondary">
+		<div class="portlet-header">Site</div>
+	<!-- 	<div class="portlet-content">Status Icons</div> -->
+	</div>
+	<div class="portlet ui-priority-secondary">
+		<div class="portlet-header">Group</div>
+	<!-- 	<div class="portlet-content">Status Icons</div> -->
+	</div>
+	<div class="clear"></div>
+</fieldset>
+<fieldset class="column">
+<legend>Columns in use</legend>
+<?php
+if (!empty($this->arrSelectedAttributes)) {
+	foreach ((array)$this->arrSelectedAttributes as $intAttributeId) {
+		if (!empty($intAttributeId)) {
+			echo $this->AttribPortlet($this->arrAttributes[$intAttributeId], $objDbTable);
+		}
+	}
+}
+?>
+<div class="clear"></div>
+</fieldset>
+</form>
+
+<fieldset class="column">
+<legend>Available Columns</legend>
+<?php
+if (!empty($this->arrAttributes)) {
+	foreach ($this->arrAttributes as $arrAttribute) {
+		if(!in_array($arrAttribute[Bf_Eav_Db_Attributes::COL_ID_ATTR],$this->arrSelectedAttributes)) {
+			echo $this->AttribPortlet($arrAttribute, $objDbTable);
+		}
+	}
+}
+?>
+<div class="clear"></div>
+</fieldset>
+<div class="clear"></div>

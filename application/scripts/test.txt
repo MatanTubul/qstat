@@ -1,0 +1,1681 @@
+Bootstrap Cron Start
+
+
+string(6) "On Map"
+
+
+
+object(Zend_Db_Table_Row_Exception)#1135 (8) {
+  ["_previous":"Zend_Exception":private] => NULL
+  ["message":protected] => string(48) "Specified column "id_entities" is not in the row"
+  ["string":"Exception":private] => string(0) ""
+  ["code":protected] => int(0)
+  ["file":protected] => string(74) "/usr/local/zend/share/ZendFramework/library/Zend/Db/Table/Row/Abstract.php"
+  ["line":protected] => int(179)
+  ["trace":"Exception":private] => array(6) {
+    [0] => array(6) {
+      ["file"] => string(41) "/var/www/qstat/library/Qstat/Importer.php"
+      ["line"] => int(51)
+      ["function"] => string(5) "__get"
+      ["class"] => string(26) "Zend_Db_Table_Row_Abstract"
+      ["type"] => string(2) "->"
+      ["args"] => array(1) {
+        [0] => string(11) "id_entities"
+      }
+    }
+    [1] => array(6) {
+      ["file"] => string(57) "/var/www/qstat/library/Qstat/Plugin/Cron/OracleImport.php"
+      ["line"] => int(17)
+      ["function"] => string(12) "importOracle"
+      ["class"] => string(14) "Qstat_Importer"
+      ["type"] => string(2) "::"
+      ["args"] => array(2) {
+        [0] => object(Zend_Db_Adapter_Pdo_Oci)#1146 (12) {
+          ["_pdoType":protected] => string(3) "oci"
+          ["_defaultStmtClass":protected] => string(25) "Zend_Db_Statement_Pdo_Oci"
+          ["_numericDataTypes":protected] => array(6) {
+            [0] => int(0)
+            [1] => int(1)
+            [2] => int(2)
+            ["BINARY_DOUBLE"] => int(2)
+            ["BINARY_FLOAT"] => int(2)
+            ["NUMBER"] => int(2)
+          }
+          ["_config":protected] => array(10) {
+            ["adapter"] => string(7) "PDO_OCI"
+            ["host"] => string(8) "mtlora06"
+            ["port"] => string(4) "1529"
+            ["username"] => string(9) "netreader"
+            ["password"] => string(11) "netreader11"
+            ["dbname"] => string(7) "netcool"
+            ["charset"] => string(4) "utf8"
+            ["persistent"] => bool(false)
+            ["options"] => array(3) {
+              ["caseFolding"] => int(0)
+              ["autoQuoteIdentifiers"] => bool(true)
+              ["fetchMode"] => int(2)
+            }
+            ["driver_options"] => array(0) {
+            }
+          }
+          ["_fetchMode":protected] => int(2)
+          ["_profiler":protected] => object(Zend_Db_Profiler)#1145 (4) {
+            ["_queryProfiles":protected] => array(0) {
+            }
+            ["_enabled":protected] => bool(false)
+            ["_filterElapsedSecs":protected] => NULL
+            ["_filterTypes":protected] => NULL
+          }
+          ["_defaultProfilerClass":protected] => string(16) "Zend_Db_Profiler"
+          ["_connection":protected] => object(PDO)#1143 (0) {
+          }
+          ["_caseFolding":protected] => int(0)
+          ["_autoQuoteIdentifiers":protected] => bool(true)
+          ["_allowSerialization":protected] => bool(true)
+          ["_autoReconnectOnUnserialize":protected] => bool(false)
+        }
+        [1] => object(Bf_Catalog)#1155 (7) {
+          ["objCatalogModel":protected] => object(Bf_Catalog_Models_Catalog)#1154 (5) {
+            ["intModuleCode":protected] => int(1)
+            ["objCatalogTable":protected] => object(Bf_Catalog_Models_Db_Catalog)#1153 (22) {
+              ["_rowClass":protected] => string(32) "Bf_Catalog_Models_Db_Catalog_Row"
+              ["strCatPathDelimiter":protected] => string(1) ";"
+              ["intModuleCode":protected] => int(1)
+              ["strModuleCodeColumn":protected] => string(11) "module_code"
+              ["_name":protected] => string(7) "catalog"
+              ["strInitSql":protected] => string(0) ""
+              ["_definition":protected] => NULL
+              ["_definitionConfigName":protected] => NULL
+              ["_db":protected] => object(Zend_Db_Adapter_Pdo_Mysql)#50 (12) {
+                ["_pdoType":protected] => string(5) "mysql"
+                ["_numericDataTypes":protected] => array(16) {
+                  [0] => int(0)
+                  [1] => int(1)
+                  [2] => int(2)
+                  ["INT"] => int(0)
+                  ["INTEGER"] => int(0)
+                  ["MEDIUMINT"] => int(0)
+                  ["SMALLINT"] => int(0)
+                  ["TINYINT"] => int(0)
+                  ["BIGINT"] => int(1)
+                  ["SERIAL"] => int(1)
+                  ["DEC"] => int(2)
+                  ["DECIMAL"] => int(2)
+                  ["DOUBLE"] => int(2)
+                  ["DOUBLE PRECISION"] => int(2)
+                  ["FIXED"] => int(2)
+                  ["FLOAT"] => int(2)
+                }
+                ["_defaultStmtClass":protected] => string(21) "Zend_Db_Statement_Pdo"
+                ["_config":protected] => array(8) {
+                  ["host"] => string(9) "127.0.0.1"
+                  ["username"] => string(5) "qstat"
+                  ["password"] => string(9) "qstat@pwd"
+                  ["dbname"] => string(5) "qstat"
+                  ["charset"] => string(4) "utf8"
+                  ["persistent"] => bool(false)
+                  ["options"] => array(3) {
+                    ["caseFolding"] => int(0)
+                    ["autoQuoteIdentifiers"] => bool(true)
+                    ["fetchMode"] => int(2)
+                  }
+                  ["driver_options"] => array(1) {
+                    [1002] => string(16) "SET NAMES 'utf8'"
+                  }
+                }
+                ["_fetchMode":protected] => int(2)
+                ["_profiler":protected] => object(Zend_Db_Profiler)#51 (4) {
+                  ["_queryProfiles":protected] => array(0) {
+                  }
+                  ["_enabled":protected] => bool(false)
+                  ["_filterElapsedSecs":protected] => NULL
+                  ["_filterTypes":protected] => NULL
+                }
+                ["_defaultProfilerClass":protected] => string(16) "Zend_Db_Profiler"
+                ["_connection":protected] => object(PDO)#1152 (0) {
+                }
+                ["_caseFolding":protected] => int(0)
+                ["_autoQuoteIdentifiers":protected] => bool(true)
+                ["_allowSerialization":protected] => bool(true)
+                ["_autoReconnectOnUnserialize":protected] => bool(false)
+              }
+              ["_schema":protected] => NULL
+              ["_cols":protected] => array(14) {
+                [0] => string(10) "id_catalog"
+                [1] => string(11) "module_code"
+                [2] => string(9) "id_parent"
+                [3] => string(8) "cat_path"
+                [4] => string(11) "id_entities"
+                [5] => string(10) "created_by"
+                [6] => string(10) "created_on"
+                [7] => string(10) "updated_by"
+                [8] => string(10) "updated_on"
+                [9] => string(10) "is_deleted"
+                [10] => string(9) "is_locked"
+                [11] => string(16) "min_id_acl_roles"
+                [12] => string(9) "is_folder"
+                [13] => string(12) "has_children"
+              }
+              ["_primary":protected] => NULL
+              ["_identity":protected] => int(1)
+              ["_sequence":protected] => bool(true)
+              ["_metadata":protected] => array(14) {
+                ["id_catalog"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(10) "id_catalog"
+                  ["COLUMN_POSITION"] => int(1)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => NULL
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(true)
+                  ["PRIMARY_POSITION"] => int(1)
+                  ["IDENTITY"] => bool(true)
+                }
+                ["module_code"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(11) "module_code"
+                  ["COLUMN_POSITION"] => int(2)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["id_parent"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(9) "id_parent"
+                  ["COLUMN_POSITION"] => int(3)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["cat_path"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(8) "cat_path"
+                  ["COLUMN_POSITION"] => int(4)
+                  ["DATA_TYPE"] => string(7) "varchar"
+                  ["DEFAULT"] => NULL
+                  ["NULLABLE"] => bool(true)
+                  ["LENGTH"] => string(3) "255"
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["id_entities"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(11) "id_entities"
+                  ["COLUMN_POSITION"] => int(5)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["created_by"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(10) "created_by"
+                  ["COLUMN_POSITION"] => int(6)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["created_on"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(10) "created_on"
+                  ["COLUMN_POSITION"] => int(7)
+                  ["DATA_TYPE"] => string(8) "datetime"
+                  ["DEFAULT"] => NULL
+                  ["NULLABLE"] => bool(true)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["updated_by"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(10) "updated_by"
+                  ["COLUMN_POSITION"] => int(8)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["updated_on"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(10) "updated_on"
+                  ["COLUMN_POSITION"] => int(9)
+                  ["DATA_TYPE"] => string(8) "datetime"
+                  ["DEFAULT"] => NULL
+                  ["NULLABLE"] => bool(true)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["is_deleted"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(10) "is_deleted"
+                  ["COLUMN_POSITION"] => int(10)
+                  ["DATA_TYPE"] => string(7) "tinyint"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["is_locked"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(9) "is_locked"
+                  ["COLUMN_POSITION"] => int(11)
+                  ["DATA_TYPE"] => string(7) "tinyint"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["min_id_acl_roles"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(16) "min_id_acl_roles"
+                  ["COLUMN_POSITION"] => int(12)
+                  ["DATA_TYPE"] => string(3) "int"
+                  ["DEFAULT"] => string(1) "1"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["is_folder"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(9) "is_folder"
+                  ["COLUMN_POSITION"] => int(13)
+                  ["DATA_TYPE"] => string(7) "tinyint"
+                  ["DEFAULT"] => string(1) "1"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+                ["has_children"] => array(14) {
+                  ["SCHEMA_NAME"] => NULL
+                  ["TABLE_NAME"] => string(7) "catalog"
+                  ["COLUMN_NAME"] => string(12) "has_children"
+                  ["COLUMN_POSITION"] => int(14)
+                  ["DATA_TYPE"] => string(7) "tinyint"
+                  ["DEFAULT"] => string(1) "0"
+                  ["NULLABLE"] => bool(false)
+                  ["LENGTH"] => NULL
+                  ["SCALE"] => NULL
+                  ["PRECISION"] => NULL
+                  ["UNSIGNED"] => NULL
+                  ["PRIMARY"] => bool(false)
+                  ["PRIMARY_POSITION"] => NULL
+                  ["IDENTITY"] => bool(false)
+                }
+              }
+              ["_metadataCache":protected] => NULL
+              ["_metadataCacheInClass":protected] => bool(true)
+              ["_rowsetClass":protected] => string(20) "Zend_Db_Table_Rowset"
+              ["_referenceMap":protected] => array(0) {
+              }
+              ["_dependentTables":protected] => array(0) {
+              }
+              ["_defaultSource":protected] => string(11) "defaultNone"
+              ["_defaultValues":protected] => array(0) {
+              }
+            }
+            ["objCatalogData":protected] => object(Bf_Catalog_Data)#1151 (4) {
+              ["intLanguage":protected] => int(0)
+              ["boolUseLanguage":protected] => bool(false)
+              ["_options":protected] => object(Zend_Config)#1161 (8) {
+                ["_allowModifications":protected] => bool(false)
+                ["_index":protected] => int(0)
+                ["_count":protected] => int(10)
+                ["_data":protected] => array(10) {
+                  ["moduleCode"] => string(1) "1"
+                  ["dataTableClass"] => string(25) "Catalog_Model_CatalogData"
+                  ["useFolderEav"] => string(0) ""
+                  ["useItemEav"] => string(1) "1"
+                  ["useAttrInList"] => string(1) "1"
+                  ["editFolder"] => object(Zend_Config)#1160 (8) {
+                    ["_allowModifications":protected] => bool(false)
+                    ["_index":protected] => int(0)
+                    ["_count":protected] => int(1)
+                    ["_data":protected] => array(1) {
+                      ["popup"] => string(1) "1"
+                    }
+                    ["_skipNextIteration":protected] => NULL
+                    ["_loadedSection":protected] => NULL
+                    ["_extends":protected] => array(0) {
+                    }
+                    ["_loadFileErrorStr":protected] => NULL
+                  }
+                  ["editItem"] => object(Zend_Config)#1159 (8) {
+                    ["_allowModifications":protected] => bool(false)
+                    ["_index":protected] => int(0)
+                    ["_count":protected] => int(1)
+                    ["_data":protected] => array(1) {
+                      ["popup"] => string(0) ""
+                    }
+                    ["_skipNextIteration":protected] => NULL
+                    ["_loadedSection":protected] => NULL
+                    ["_extends":protected] => array(0) {
+                    }
+                    ["_loadFileErrorStr":protected] => NULL
+                  }
+                  ["form"] => object(Zend_Config)#1158 (8) {
+                    ["_allowModifications":protected] => bool(false)
+                    ["_index":protected] => int(0)
+                    ["_count":protected] => int(4)
+                    ["_data":protected] => array(4) {
+                      ["formName"] => string(10) "frmCatalog"
+                      ["formId"] => string(10) "frmCatalog"
+                      ["dataForm"] => object(Zend_Config)#1157 (8) {
+                        ["_allowModifications":protected] => bool(false)
+                        ["_index":protected] => int(0)
+                        ["_count":protected] => int(5)
+                        ["_data":protected] => array(5) {
+                          ["Class"] => string(17) "Catalog_Form_Data"
+                          ["formName"] => string(7) "frmData"
+                          ["formId"] => string(7) "frmData"
+                          ["formGroupName"] => string(10) "frmDataGrp"
+                          ["formGroupLegend"] => string(17) "LBL_CAT_FORM_DATA"
+                        }
+                        ["_skipNextIteration":protected] => NULL
+                        ["_loadedSection":protected] => NULL
+                        ["_extends":protected] => array(0) {
+                        }
+                        ["_loadFileErrorStr":protected] => NULL
+                      }
+                      ["eav"] => object(Zend_Config)#1156 (8) {
+                        ["_allowModifications":protected] => bool(false)
+                        ["_index":protected] => int(0)
+                        ["_count":protected] => int(2)
+                        ["_data":protected] => array(2) {
+                          ["formName"] => string(6) "frmEav"
+                          ["formId"] => string(6) "frmEav"
+                        }
+                        ["_skipNextIteration":protected] => NULL
+                        ["_loadedSection":protected] => NULL
+                        ["_extends":protected] => array(0) {
+                        }
+                        ["_loadFileErrorStr":protected] => NULL
+                      }
+                    }
+                    ["_skipNextIteration":protected] => NULL
+                    ["_loadedSection":protected] => NULL
+                    ["_extends":protected] => array(0) {
+                    }
+                    ["_loadFileErrorStr":protected] => NULL
+                  }
+                  ["useLanguage"] => string(0) ""
+                  ["defaultLanguage"] => string(1) "1"
+                }
+                ["_skipNextIteration":protected] => NULL
+                ["_loadedSection":protected] => NULL
+                ["_extends":protected] => array(0) {
+                }
+                ["_loadFileErrorStr":protected] => NULL
+              }
+              ["objDbDataTable":protected] => object(Catalog_Model_CatalogData)#1149 (19) {
+                ["_name":protected] => string(12) "catalog_data"
+                ["_rowClass":protected] => string(15) "Bf_Db_Table_Row"
+                ["strInitSql":protected] => string(0) ""
+                ["_definition":protected] => NULL
+                ["_definitionConfigName":protected] => NULL
+                ["_db":protected] => object(Zend_Db_Adapter_Pdo_Mysql)#50 (12) {
+                  ["_pdoType":protected] => string(5) "mysql"
+                  ["_numericDataTypes":protected] => array(16) {
+                    [0] => int(0)
+                    [1] => int(1)
+                    [2] => int(2)
+                    ["INT"] => int(0)
+                    ["INTEGER"] => int(0)
+                    ["MEDIUMINT"] => int(0)
+                    ["SMALLINT"] => int(0)
+                    ["TINYINT"] => int(0)
+                    ["BIGINT"] => int(1)
+                    ["SERIAL"] => int(1)
+                    ["DEC"] => int(2)
+                    ["DECIMAL"] => int(2)
+                    ["DOUBLE"] => int(2)
+                    ["DOUBLE PRECISION"] => int(2)
+                    ["FIXED"] => int(2)
+                    ["FLOAT"] => int(2)
+                  }
+                  ["_defaultStmtClass":protected] => string(21) "Zend_Db_Statement_Pdo"
+                  ["_config":protected] => array(8) {
+                    ["host"] => string(9) "127.0.0.1"
+                    ["username"] => string(5) "qstat"
+                    ["password"] => string(9) "qstat@pwd"
+                    ["dbname"] => string(5) "qstat"
+                    ["charset"] => string(4) "utf8"
+                    ["persistent"] => bool(false)
+                    ["options"] => array(3) {
+                      ["caseFolding"] => int(0)
+                      ["autoQuoteIdentifiers"] => bool(true)
+                      ["fetchMode"] => int(2)
+                    }
+                    ["driver_options"] => array(1) {
+                      [1002] => string(16) "SET NAMES 'utf8'"
+                    }
+                  }
+                  ["_fetchMode":protected] => int(2)
+                  ["_profiler":protected] => object(Zend_Db_Profiler)#51 (4) {
+                    ["_queryProfiles":protected] => array(0) {
+                    }
+                    ["_enabled":protected] => bool(false)
+                    ["_filterElapsedSecs":protected] => NULL
+                    ["_filterTypes":protected] => NULL
+                  }
+                  ["_defaultProfilerClass":protected] => string(16) "Zend_Db_Profiler"
+                  ["_connection":protected] => object(PDO)#1152 (0) {
+                  }
+                  ["_caseFolding":protected] => int(0)
+                  ["_autoQuoteIdentifiers":protected] => bool(true)
+                  ["_allowSerialization":protected] => bool(true)
+                  ["_autoReconnectOnUnserialize":protected] => bool(false)
+                }
+                ["_schema":protected] => NULL
+                ["_cols":protected] => array(16) {
+                  [0] => string(10) "id_catalog"
+                  [1] => string(12) "id_languages"
+                  [2] => string(5) "title"
+                  [3] => string(11) "description"
+                  [4] => string(10) "created_by"
+                  [5] => string(10) "created_on"
+                  [6] => string(10) "updated_by"
+                  [7] => string(10) "updated_on"
+                  [8] => string(10) "is_deleted"
+                  [9] => string(10) "ip_address"
+                  [10] => string(9) "id_groups"
+                  [11] => string(8) "id_sites"
+                  [12] => string(9) "is_shared"
+                  [13] => string(14) "id_script_lock"
+                  [14] => string(16) "id_script_unlock"
+                  [15] => string(15) "lock_limit_time"
+                }
+                ["_primary":protected] => array(2) {
+                  [1] => string(10) "id_catalog"
+                  [2] => string(12) "id_languages"
+                }
+                ["_identity":protected] => int(1)
+                ["_sequence":protected] => bool(true)
+                ["_metadata":protected] => array(16) {
+                  ["id_catalog"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "id_catalog"
+                    ["COLUMN_POSITION"] => int(1)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(true)
+                    ["PRIMARY_POSITION"] => int(1)
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["id_languages"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(12) "id_languages"
+                    ["COLUMN_POSITION"] => int(2)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "1"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(true)
+                    ["PRIMARY_POSITION"] => int(2)
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["title"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(5) "title"
+                    ["COLUMN_POSITION"] => int(3)
+                    ["DATA_TYPE"] => string(7) "varchar"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => string(4) "1024"
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["description"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(11) "description"
+                    ["COLUMN_POSITION"] => int(4)
+                    ["DATA_TYPE"] => string(4) "text"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["created_by"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "created_by"
+                    ["COLUMN_POSITION"] => int(5)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["created_on"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "created_on"
+                    ["COLUMN_POSITION"] => int(6)
+                    ["DATA_TYPE"] => string(8) "datetime"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["updated_by"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "updated_by"
+                    ["COLUMN_POSITION"] => int(7)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["updated_on"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "updated_on"
+                    ["COLUMN_POSITION"] => int(8)
+                    ["DATA_TYPE"] => string(8) "datetime"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["is_deleted"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "is_deleted"
+                    ["COLUMN_POSITION"] => int(9)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["ip_address"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(10) "ip_address"
+                    ["COLUMN_POSITION"] => int(10)
+                    ["DATA_TYPE"] => string(7) "varchar"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => string(2) "15"
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["id_groups"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(9) "id_groups"
+                    ["COLUMN_POSITION"] => int(11)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["id_sites"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(8) "id_sites"
+                    ["COLUMN_POSITION"] => int(12)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["is_shared"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(9) "is_shared"
+                    ["COLUMN_POSITION"] => int(13)
+                    ["DATA_TYPE"] => string(7) "tinyint"
+                    ["DEFAULT"] => string(1) "1"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["id_script_lock"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(14) "id_script_lock"
+                    ["COLUMN_POSITION"] => int(14)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["id_script_unlock"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(16) "id_script_unlock"
+                    ["COLUMN_POSITION"] => int(15)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["lock_limit_time"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(12) "catalog_data"
+                    ["COLUMN_NAME"] => string(15) "lock_limit_time"
+                    ["COLUMN_POSITION"] => int(16)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                }
+                ["_metadataCache":protected] => NULL
+                ["_metadataCacheInClass":protected] => bool(true)
+                ["_rowsetClass":protected] => string(20) "Zend_Db_Table_Rowset"
+                ["_referenceMap":protected] => array(0) {
+                }
+                ["_dependentTables":protected] => array(0) {
+                }
+                ["_defaultSource":protected] => string(11) "defaultNone"
+                ["_defaultValues":protected] => array(0) {
+                }
+              }
+            }
+            ["_options":protected] => object(Zend_Config)#1161 (8) {
+              ["_allowModifications":protected] => bool(false)
+              ["_index":protected] => int(0)
+              ["_count":protected] => int(10)
+              ["_data":protected] => array(10) {
+                ["moduleCode"] => string(1) "1"
+                ["dataTableClass"] => string(25) "Catalog_Model_CatalogData"
+                ["useFolderEav"] => string(0) ""
+                ["useItemEav"] => string(1) "1"
+                ["useAttrInList"] => string(1) "1"
+                ["editFolder"] => object(Zend_Config)#1160 (8) {
+                  ["_allowModifications":protected] => bool(false)
+                  ["_index":protected] => int(0)
+                  ["_count":protected] => int(1)
+                  ["_data":protected] => array(1) {
+                    ["popup"] => string(1) "1"
+                  }
+                  ["_skipNextIteration":protected] => NULL
+                  ["_loadedSection":protected] => NULL
+                  ["_extends":protected] => array(0) {
+                  }
+                  ["_loadFileErrorStr":protected] => NULL
+                }
+                ["editItem"] => object(Zend_Config)#1159 (8) {
+                  ["_allowModifications":protected] => bool(false)
+                  ["_index":protected] => int(0)
+                  ["_count":protected] => int(1)
+                  ["_data":protected] => array(1) {
+                    ["popup"] => string(0) ""
+                  }
+                  ["_skipNextIteration":protected] => NULL
+                  ["_loadedSection":protected] => NULL
+                  ["_extends":protected] => array(0) {
+                  }
+                  ["_loadFileErrorStr":protected] => NULL
+                }
+                ["form"] => object(Zend_Config)#1158 (8) {
+                  ["_allowModifications":protected] => bool(false)
+                  ["_index":protected] => int(0)
+                  ["_count":protected] => int(4)
+                  ["_data":protected] => array(4) {
+                    ["formName"] => string(10) "frmCatalog"
+                    ["formId"] => string(10) "frmCatalog"
+                    ["dataForm"] => object(Zend_Config)#1157 (8) {
+                      ["_allowModifications":protected] => bool(false)
+                      ["_index":protected] => int(0)
+                      ["_count":protected] => int(5)
+                      ["_data":protected] => array(5) {
+                        ["Class"] => string(17) "Catalog_Form_Data"
+                        ["formName"] => string(7) "frmData"
+                        ["formId"] => string(7) "frmData"
+                        ["formGroupName"] => string(10) "frmDataGrp"
+                        ["formGroupLegend"] => string(17) "LBL_CAT_FORM_DATA"
+                      }
+                      ["_skipNextIteration":protected] => NULL
+                      ["_loadedSection":protected] => NULL
+                      ["_extends":protected] => array(0) {
+                      }
+                      ["_loadFileErrorStr":protected] => NULL
+                    }
+                    ["eav"] => object(Zend_Config)#1156 (8) {
+                      ["_allowModifications":protected] => bool(false)
+                      ["_index":protected] => int(0)
+                      ["_count":protected] => int(2)
+                      ["_data":protected] => array(2) {
+                        ["formName"] => string(6) "frmEav"
+                        ["formId"] => string(6) "frmEav"
+                      }
+                      ["_skipNextIteration":protected] => NULL
+                      ["_loadedSection":protected] => NULL
+                      ["_extends":protected] => array(0) {
+                      }
+                      ["_loadFileErrorStr":protected] => NULL
+                    }
+                  }
+                  ["_skipNextIteration":protected] => NULL
+                  ["_loadedSection":protected] => NULL
+                  ["_extends":protected] => array(0) {
+                  }
+                  ["_loadFileErrorStr":protected] => NULL
+                }
+                ["useLanguage"] => string(0) ""
+                ["defaultLanguage"] => string(1) "1"
+              }
+              ["_skipNextIteration":protected] => NULL
+              ["_loadedSection":protected] => NULL
+              ["_extends":protected] => array(0) {
+              }
+              ["_loadFileErrorStr":protected] => NULL
+            }
+            ["arrAttriList":protected] => object(Zend_Db_Table_Rowset)#1147 (10) {
+              ["_data":protected] => array(8) {
+                [0] => array(13) {
+                  ["id_attributes"] => string(1) "1"
+                  ["attribute_code"] => string(6) "memory"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(4) "text"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-11-28 21:25:31"
+                  ["updated_by"] => string(1) "4"
+                  ["updated_on"] => string(19) "2012-01-10 14:58:49"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [1] => array(13) {
+                  ["id_attributes"] => string(1) "7"
+                  ["attribute_code"] => string(13) "Server Vendor"
+                  ["description"] => string(16) "Vendor of server"
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(6) "select"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-07 09:25:27"
+                  ["updated_by"] => string(1) "5"
+                  ["updated_on"] => string(19) "2011-12-18 10:10:32"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [2] => array(13) {
+                  ["id_attributes"] => string(1) "8"
+                  ["attribute_code"] => string(8) "CPU Type"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(6) "select"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-11 10:57:04"
+                  ["updated_by"] => string(1) "0"
+                  ["updated_on"] => string(19) "2011-12-11 10:57:04"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [3] => array(13) {
+                  ["id_attributes"] => string(2) "10"
+                  ["attribute_code"] => string(10) "IP_Address"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(4) "text"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-07 09:25:34"
+                  ["updated_by"] => string(1) "0"
+                  ["updated_on"] => string(19) "2011-12-07 09:25:34"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [4] => array(13) {
+                  ["id_attributes"] => string(2) "11"
+                  ["attribute_code"] => string(12) "Server Model"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(4) "text"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-11 10:57:09"
+                  ["updated_by"] => string(1) "0"
+                  ["updated_on"] => string(19) "2011-12-11 10:57:09"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [5] => array(13) {
+                  ["id_attributes"] => string(2) "12"
+                  ["attribute_code"] => string(10) "CPU_number"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(4) "text"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-11 10:57:23"
+                  ["updated_by"] => string(1) "0"
+                  ["updated_on"] => string(19) "2011-12-11 10:57:23"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [6] => array(13) {
+                  ["id_attributes"] => string(2) "13"
+                  ["attribute_code"] => string(9) "Disk Size"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(4) "text"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-11 10:57:29"
+                  ["updated_by"] => string(1) "0"
+                  ["updated_on"] => string(19) "2011-12-11 10:57:29"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+                [7] => array(13) {
+                  ["id_attributes"] => string(2) "23"
+                  ["attribute_code"] => string(18) "MELLANOX_CARD_TYPE"
+                  ["description"] => string(0) ""
+                  ["units"] => string(0) ""
+                  ["value_type"] => string(6) "select"
+                  ["is_multi_value"] => string(1) "0"
+                  ["is_lang_sync"] => string(1) "0"
+                  ["created_by"] => string(1) "0"
+                  ["created_on"] => string(19) "2011-12-07 22:42:39"
+                  ["updated_by"] => string(1) "4"
+                  ["updated_on"] => string(19) "2012-01-10 14:58:57"
+                  ["is_deleted"] => string(1) "0"
+                  ["is_show_list"] => string(1) "1"
+                }
+              }
+              ["_table":protected] => object(Bf_Eav_Db_Attributes)#1150 (19) {
+                ["_name":protected] => string(10) "attributes"
+                ["_rowClass":protected] => string(15) "Bf_Db_Table_Row"
+                ["strInitSql":protected] => string(0) ""
+                ["_definition":protected] => NULL
+                ["_definitionConfigName":protected] => NULL
+                ["_db":protected] => object(Zend_Db_Adapter_Pdo_Mysql)#50 (12) {
+                  ["_pdoType":protected] => string(5) "mysql"
+                  ["_numericDataTypes":protected] => array(16) {
+                    [0] => int(0)
+                    [1] => int(1)
+                    [2] => int(2)
+                    ["INT"] => int(0)
+                    ["INTEGER"] => int(0)
+                    ["MEDIUMINT"] => int(0)
+                    ["SMALLINT"] => int(0)
+                    ["TINYINT"] => int(0)
+                    ["BIGINT"] => int(1)
+                    ["SERIAL"] => int(1)
+                    ["DEC"] => int(2)
+                    ["DECIMAL"] => int(2)
+                    ["DOUBLE"] => int(2)
+                    ["DOUBLE PRECISION"] => int(2)
+                    ["FIXED"] => int(2)
+                    ["FLOAT"] => int(2)
+                  }
+                  ["_defaultStmtClass":protected] => string(21) "Zend_Db_Statement_Pdo"
+                  ["_config":protected] => array(8) {
+                    ["host"] => string(9) "127.0.0.1"
+                    ["username"] => string(5) "qstat"
+                    ["password"] => string(9) "qstat@pwd"
+                    ["dbname"] => string(5) "qstat"
+                    ["charset"] => string(4) "utf8"
+                    ["persistent"] => bool(false)
+                    ["options"] => array(3) {
+                      ["caseFolding"] => int(0)
+                      ["autoQuoteIdentifiers"] => bool(true)
+                      ["fetchMode"] => int(2)
+                    }
+                    ["driver_options"] => array(1) {
+                      [1002] => string(16) "SET NAMES 'utf8'"
+                    }
+                  }
+                  ["_fetchMode":protected] => int(2)
+                  ["_profiler":protected] => object(Zend_Db_Profiler)#51 (4) {
+                    ["_queryProfiles":protected] => array(0) {
+                    }
+                    ["_enabled":protected] => bool(false)
+                    ["_filterElapsedSecs":protected] => NULL
+                    ["_filterTypes":protected] => NULL
+                  }
+                  ["_defaultProfilerClass":protected] => string(16) "Zend_Db_Profiler"
+                  ["_connection":protected] => object(PDO)#1152 (0) {
+                  }
+                  ["_caseFolding":protected] => int(0)
+                  ["_autoQuoteIdentifiers":protected] => bool(true)
+                  ["_allowSerialization":protected] => bool(true)
+                  ["_autoReconnectOnUnserialize":protected] => bool(false)
+                }
+                ["_schema":protected] => NULL
+                ["_cols":protected] => array(13) {
+                  [0] => string(13) "id_attributes"
+                  [1] => string(14) "attribute_code"
+                  [2] => string(11) "description"
+                  [3] => string(5) "units"
+                  [4] => string(10) "value_type"
+                  [5] => string(14) "is_multi_value"
+                  [6] => string(12) "is_lang_sync"
+                  [7] => string(10) "created_by"
+                  [8] => string(10) "created_on"
+                  [9] => string(10) "updated_by"
+                  [10] => string(10) "updated_on"
+                  [11] => string(10) "is_deleted"
+                  [12] => string(12) "is_show_list"
+                }
+                ["_primary":protected] => array(1) {
+                  [1] => string(13) "id_attributes"
+                }
+                ["_identity":protected] => int(1)
+                ["_sequence":protected] => bool(true)
+                ["_metadata":protected] => array(13) {
+                  ["id_attributes"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(13) "id_attributes"
+                    ["COLUMN_POSITION"] => int(1)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(true)
+                    ["PRIMARY_POSITION"] => int(1)
+                    ["IDENTITY"] => bool(true)
+                  }
+                  ["attribute_code"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(14) "attribute_code"
+                    ["COLUMN_POSITION"] => int(2)
+                    ["DATA_TYPE"] => string(7) "varchar"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => string(3) "255"
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["description"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(11) "description"
+                    ["COLUMN_POSITION"] => int(3)
+                    ["DATA_TYPE"] => string(7) "varchar"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => string(3) "255"
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["units"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(5) "units"
+                    ["COLUMN_POSITION"] => int(4)
+                    ["DATA_TYPE"] => string(7) "varchar"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => string(3) "255"
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["value_type"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(10) "value_type"
+                    ["COLUMN_POSITION"] => int(5)
+                    ["DATA_TYPE"] => string(132) "enum('text','longtext','integer','float','datetime','select','file','boolean','date','blob','multiselect','radioselect','checklist')"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["is_multi_value"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(14) "is_multi_value"
+                    ["COLUMN_POSITION"] => int(6)
+                    ["DATA_TYPE"] => string(7) "tinyint"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["is_lang_sync"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(12) "is_lang_sync"
+                    ["COLUMN_POSITION"] => int(7)
+                    ["DATA_TYPE"] => string(7) "tinyint"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["created_by"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(10) "created_by"
+                    ["COLUMN_POSITION"] => int(8)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["created_on"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(10) "created_on"
+                    ["COLUMN_POSITION"] => int(9)
+                    ["DATA_TYPE"] => string(8) "datetime"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["updated_by"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(10) "updated_by"
+                    ["COLUMN_POSITION"] => int(10)
+                    ["DATA_TYPE"] => string(3) "int"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["updated_on"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(10) "updated_on"
+                    ["COLUMN_POSITION"] => int(11)
+                    ["DATA_TYPE"] => string(8) "datetime"
+                    ["DEFAULT"] => NULL
+                    ["NULLABLE"] => bool(true)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["is_deleted"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(10) "is_deleted"
+                    ["COLUMN_POSITION"] => int(12)
+                    ["DATA_TYPE"] => string(7) "tinyint"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                  ["is_show_list"] => array(14) {
+                    ["SCHEMA_NAME"] => NULL
+                    ["TABLE_NAME"] => string(10) "attributes"
+                    ["COLUMN_NAME"] => string(12) "is_show_list"
+                    ["COLUMN_POSITION"] => int(13)
+                    ["DATA_TYPE"] => string(7) "tinyint"
+                    ["DEFAULT"] => string(1) "0"
+                    ["NULLABLE"] => bool(false)
+                    ["LENGTH"] => NULL
+                    ["SCALE"] => NULL
+                    ["PRECISION"] => NULL
+                    ["UNSIGNED"] => NULL
+                    ["PRIMARY"] => bool(false)
+                    ["PRIMARY_POSITION"] => NULL
+                    ["IDENTITY"] => bool(false)
+                  }
+                }
+                ["_metadataCache":protected] => NULL
+                ["_metadataCacheInClass":protected] => bool(true)
+                ["_rowsetClass":protected] => string(20) "Zend_Db_Table_Rowset"
+                ["_referenceMap":protected] => array(0) {
+                }
+                ["_dependentTables":protected] => array(0) {
+                }
+                ["_defaultSource":protected] => string(11) "defaultNone"
+                ["_defaultValues":protected] => array(0) {
+                }
+              }
+              ["_connected":protected] => bool(true)
+              ["_tableClass":protected] => string(20) "Bf_Eav_Db_Attributes"
+              ["_rowClass":protected] => string(15) "Bf_Db_Table_Row"
+              ["_pointer":protected] => int(0)
+              ["_count":protected] => int(8)
+              ["_rows":protected] => array(0) {
+              }
+              ["_stored":protected] => bool(true)
+              ["_readOnly":protected] => bool(false)
+            }
+          }
+          ["objEav":protected] => object(Bf_Eav)#1148 (1) {
+            ["_options":protected] => object(Zend_Config)#1156 (8) {
+              ["_allowModifications":protected] => bool(false)
+              ["_index":protected] => int(0)
+              ["_count":protected] => int(2)
+              ["_data":protected] => array(2) {
+                ["formName"] => string(6) "frmEav"
+                ["formId"] => string(6) "frmEav"
+              }
+              ["_skipNextIteration":protected] => NULL
+              ["_loadedSection":protected] => NULL
+              ["_extends":protected] => array(0) {
+              }
+              ["_loadFileErrorStr":protected] => NULL
+            }
+          }
+          ["objItemsModel":protected] => NULL
+          ["boolIsI18n":protected] => NULL
+          ["intModuleCode":protected] => int(1)
+          ["_options":protected] => object(Zend_Config)#1161 (8) {
+            ["_allowModifications":protected] => bool(false)
+            ["_index":protected] => int(0)
+            ["_count":protected] => int(10)
+            ["_data":protected] => array(10) {
+              ["moduleCode"] => string(1) "1"
+              ["dataTableClass"] => string(25) "Catalog_Model_CatalogData"
+              ["useFolderEav"] => string(0) ""
+              ["useItemEav"] => string(1) "1"
+              ["useAttrInList"] => string(1) "1"
+              ["editFolder"] => object(Zend_Config)#1160 (8) {
+                ["_allowModifications":protected] => bool(false)
+                ["_index":protected] => int(0)
+                ["_count":protected] => int(1)
+                ["_data":protected] => array(1) {
+                  ["popup"] => string(1) "1"
+                }
+                ["_skipNextIteration":protected] => NULL
+                ["_loadedSection":protected] => NULL
+                ["_extends":protected] => array(0) {
+                }
+                ["_loadFileErrorStr":protected] => NULL
+              }
+              ["editItem"] => object(Zend_Config)#1159 (8) {
+                ["_allowModifications":protected] => bool(false)
+                ["_index":protected] => int(0)
+                ["_count":protected] => int(1)
+                ["_data":protected] => array(1) {
+                  ["popup"] => string(0) ""
+                }
+                ["_skipNextIteration":protected] => NULL
+                ["_loadedSection":protected] => NULL
+                ["_extends":protected] => array(0) {
+                }
+                ["_loadFileErrorStr":protected] => NULL
+              }
+              ["form"] => object(Zend_Config)#1158 (8) {
+                ["_allowModifications":protected] => bool(false)
+                ["_index":protected] => int(0)
+                ["_count":protected] => int(4)
+                ["_data":protected] => array(4) {
+                  ["formName"] => string(10) "frmCatalog"
+                  ["formId"] => string(10) "frmCatalog"
+                  ["dataForm"] => object(Zend_Config)#1157 (8) {
+                    ["_allowModifications":protected] => bool(false)
+                    ["_index":protected] => int(0)
+                    ["_count":protected] => int(5)
+                    ["_data":protected] => array(5) {
+                      ["Class"] => string(17) "Catalog_Form_Data"
+                      ["formName"] => string(7) "frmData"
+                      ["formId"] => string(7) "frmData"
+                      ["formGroupName"] => string(10) "frmDataGrp"
+                      ["formGroupLegend"] => string(17) "LBL_CAT_FORM_DATA"
+                    }
+                    ["_skipNextIteration":protected] => NULL
+                    ["_loadedSection":protected] => NULL
+                    ["_extends":protected] => array(0) {
+                    }
+                    ["_loadFileErrorStr":protected] => NULL
+                  }
+                  ["eav"] => object(Zend_Config)#1156 (8) {
+                    ["_allowModifications":protected] => bool(false)
+                    ["_index":protected] => int(0)
+                    ["_count":protected] => int(2)
+                    ["_data":protected] => array(2) {
+                      ["formName"] => string(6) "frmEav"
+                      ["formId"] => string(6) "frmEav"
+                    }
+                    ["_skipNextIteration":protected] => NULL
+                    ["_loadedSection":protected] => NULL
+                    ["_extends":protected] => array(0) {
+                    }
+                    ["_loadFileErrorStr":protected] => NULL
+                  }
+                }
+                ["_skipNextIteration":protected] => NULL
+                ["_loadedSection":protected] => NULL
+                ["_extends":protected] => array(0) {
+                }
+                ["_loadFileErrorStr":protected] => NULL
+              }
+              ["useLanguage"] => string(0) ""
+              ["defaultLanguage"] => string(1) "1"
+            }
+            ["_skipNextIteration":protected] => NULL
+            ["_loadedSection":protected] => NULL
+            ["_extends":protected] => array(0) {
+            }
+            ["_loadFileErrorStr":protected] => NULL
+          }
+          ["strEavIndex":protected] => string(3) "eav"
+        }
+      }
+    }
+    [2] => array(6) {
+      ["file"] => string(42) "/var/www/qstat/library/Bf/Service/Cron.php"
+      ["line"] => int(59)
+      ["function"] => string(3) "run"
+      ["class"] => string(27) "Bf_Plugin_Cron_OracleImport"
+      ["type"] => string(2) "->"
+      ["args"] => array(0) {
+      }
+    }
+    [3] => array(6) {
+      ["file"] => string(35) "/var/www/qstat/application/Cron.php"
+      ["line"] => int(15)
+      ["function"] => string(3) "run"
+      ["class"] => string(15) "Bf_Service_Cron"
+      ["type"] => string(2) "->"
+      ["args"] => array(1) {
+        [0] => &array(11) {
+          ["resources"] => array(8) {
+            ["mail"] => array(3) {
+              ["transport"] => array(3) {
+                ["type"] => string(4) "smtp"
+                ["host"] => string(9) "labmailer"
+                ["register"] => string(1) "1"
+              }
+              ["defaultFrom"] => array(2) {
+                ["email"] => string(18) "omert@mellanox.com"
+                ["name"] => string(22) "Qstat Mail Test System"
+              }
+              ["defaultReplyTo"] => array(2) {
+                ["email"] => string(18) "omert@mellanox.com"
+                ["name"] => string(23) "Qstat Maile Test System"
+              }
+            }
+            ["cron"] => array(2) {
+              ["pluginPaths"] => array(2) {
+                ["Bf_Plugin_Cron_"] => string(52) "/var/www/qstat/application/../library/Bf/Plugin/Cron"
+                ["Qstat_Plugin_Cron_"] => string(55) "/var/www/qstat/application/../library/Qstat/Plugin/Cron"
+              }
+              ["actions"] => array(6) {
+                ["TouchFile"] => array(1) {
+                  ["filename"] => string(9) "/tmp/test"
+                }
+                ["OracleImport"] => array(1) {
+                  ["minLockTime"] => string(4) "3600"
+                }
+                ["LockStart"] => array(1) {
+                  ["minLockTime"] => string(1) "0"
+                }
+                ["LockEnd"] => array(1) {
+                  ["minLockTime"] => string(1) "0"
+                }
+                ["LockEndTime"] => array(1) {
+                  ["minLockTime"] => string(1) "0"
+                }
+                ["LockEndTimeNotification"] => array(1) {
+                  ["minLockTime"] => string(1) "0"
+                }
+              }
+            }
+            ["frontController"] => array(5) {
+              ["params"] => array(1) {
+                ["displayExceptions"] => string(1) "0"
+              }
+              ["moduleDirectory"] => string(34) "/var/www/qstat/application/modules"
+              ["defaultModule"] => string(5) "index"
+              ["defaultControllerName"] => string(5) "index"
+              ["defaultAction"] => string(5) "index"
+            }
+            ["modules"] => string(0) ""
+            ["layout"] => array(2) {
+              ["layout"] => string(6) "layout"
+              ["layoutPath"] => string(34) "/var/www/qstat/application/layouts"
+            }
+            ["view"] => array(3) {
+              [0] => string(0) ""
+              ["contentType"] => string(24) "text/html; charset=UTF-8"
+              ["helperPath"] => array(2) {
+                ["Bf_View_Helper"] => string(14) "Bf/View/Helper"
+                ["ZendX_JQuery_View_Helper"] => string(24) "ZendX/JQuery/View/Helper"
+              }
+            }
+            ["locale"] => array(2) {
+              ["default"] => string(2) "en"
+              ["force"] => string(1) "1"
+            }
+            ["multidb"] => array(2) {
+              ["db1"] => array(8) {
+                ["adapter"] => string(9) "PDO_MYSQL"
+                ["host"] => string(9) "127.0.0.1"
+                ["username"] => string(5) "qstat"
+                ["password"] => string(9) "qstat@pwd"
+                ["dbname"] => string(5) "qstat"
+                ["isDefaultTableAdapter"] => string(1) "1"
+                ["charset"] => string(4) "utf8"
+                ["default"] => string(1) "1"
+              }
+              ["oracle"] => array(7) {
+                ["adapter"] => string(7) "PDO_OCI"
+                ["host"] => string(8) "mtlora06"
+                ["port"] => string(4) "1529"
+                ["username"] => string(9) "netreader"
+                ["password"] => string(11) "netreader11"
+                ["dbname"] => string(7) "netcool"
+                ["charset"] => string(4) "utf8"
+              }
+            }
+          }
+          ["cron"] => array(1) {
+            ["debug"] => string(0) ""
+          }
+          ["pluginPaths"] => array(1) {
+            ["Bf_Plugin_Resource"] => string(56) "/var/www/qstat/application/../library/Bf/Plugin/Resource"
+          }
+          ["phpSettings"] => array(3) {
+            ["display_startup_errors"] => string(1) "1"
+            ["display_errors"] => string(1) "1"
+            ["date"] => array(1) {
+              ["timezone"] => string(14) "Asia/Jerusalem"
+            }
+          }
+          ["includePaths"] => array(1) {
+            ["library"] => string(40) "/var/www/qstat/application/../../library"
+          }
+          ["bootstrap"] => array(2) {
+            ["path"] => string(35) "/var/www/qstat/application/Cron.php"
+            ["class"] => string(14) "Bootstrap_Cron"
+          }
+          ["appnamespace"] => string(11) "Application"
+          ["autoloadernamespaces"] => array(4) {
+            ["Qstat"] => string(6) "Qstat_"
+            ["Bf"] => string(3) "Bf_"
+            ["Ingot"] => string(6) "Ingot_"
+            ["ZendX"] => string(6) "ZendX_"
+          }
+          ["config"] => string(50) "/var/www/qstat/application/configs/application.ini"
+          ["extraData"] => array(1) {
+            ["user"] => array(1) {
+              ["userDetails"] => array(1) {
+                [0] => string(23) "Qstat_User_Extra_Detail"
+              }
+            }
+          }
+          ["catalog"] => array(10) {
+            ["moduleCode"] => string(1) "1"
+            ["dataTableClass"] => string(25) "Catalog_Model_CatalogData"
+            ["useFolderEav"] => string(0) ""
+            ["useItemEav"] => string(1) "1"
+            ["useAttrInList"] => string(1) "1"
+            ["editFolder"] => array(1) {
+              ["popup"] => string(1) "1"
+            }
+            ["editItem"] => array(1) {
+              ["popup"] => string(0) ""
+            }
+            ["form"] => array(4) {
+              ["formName"] => string(10) "frmCatalog"
+              ["formId"] => string(10) "frmCatalog"
+              ["dataForm"] => array(5) {
+                ["Class"] => string(17) "Catalog_Form_Data"
+                ["formName"] => string(7) "frmData"
+                ["formId"] => string(7) "frmData"
+                ["formGroupName"] => string(10) "frmDataGrp"
+                ["formGroupLegend"] => string(17) "LBL_CAT_FORM_DATA"
+              }
+              ["eav"] => array(2) {
+                ["formName"] => string(6) "frmEav"
+                ["formId"] => string(6) "frmEav"
+              }
+            }
+            ["useLanguage"] => string(0) ""
+            ["defaultLanguage"] => string(1) "1"
+          }
+        }
+      }
+    }
+    [4] => array(6) {
+      ["file"] => string(64) "/usr/local/zend/share/ZendFramework/library/Zend/Application.php"
+      ["line"] => int(366)
+      ["function"] => string(3) "run"
+      ["class"] => string(14) "Bootstrap_Cron"
+      ["type"] => string(2) "->"
+      ["args"] => array(0) {
+      }
+    }
+    [5] => array(6) {
+      ["file"] => string(43) "/var/www/qstat/application/scripts/cron.php"
+      ["line"] => int(46)
+      ["function"] => string(3) "run"
+      ["class"] => string(16) "Zend_Application"
+      ["type"] => string(2) "->"
+      ["args"] => array(0) {
+      }
+    }
+  }
+  ["previous":"Exception":private] => NULL
+}
+
+Bootstrap Cron End

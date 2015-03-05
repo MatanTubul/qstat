@@ -1,0 +1,48 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	  google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+        		<?php 
+        			$arrMounth=array(0,"January","February","March","April","May","June","July","August","September","October","November","December");
+					$html="[";
+        			$html.="['Mounth'";
+	        		foreach ($this->Locks as $strYear => $arrLock){
+	        			$html.=",".$strYear;
+	        		}
+	        		$html.="]";
+	        		
+	        		for ($countM=1; $countM<13;$countM++){
+	        			$html.=",['".$arrMounth[$countM]."'";
+	        			foreach ($this->Locks as $strYear => $arrLock){
+	        				if (!empty($arrLock[str_pad($countM, 2, "0", STR_PAD_LEFT)])){
+	        					$html.=",".$arrLock[str_pad($countM, 2, "0", STR_PAD_LEFT)];
+	        				}else{
+	        					$html.=",0";
+	        				}
+	        			}
+	        			$html.="]";
+	        		}
+	        		$html.="]";
+	        		echo $html;
+        		?>
+
+                );
+
+        var options = {
+          title: '<?php echo $this->translate("LBL_NUMBER_LOCKS_PER_MOUNTH_FOR_EACH_YEAR");?>',
+          vAxis: {title: '',  titleTextStyle: {color: 'red'}},
+          width: '100%',
+          chartArea: {left:50,top:40, width:"80%",height:"70%"},
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+</script>
+<?php 
+//echo $this->select;
+?>
+<div id="chart_div" style="width: 1000px; height: 600px;"></div>

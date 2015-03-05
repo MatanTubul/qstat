@@ -1,0 +1,11 @@
+<?php echo $this->result?>
+<br>
+Waiting for 5 sec to redirect or <a href="<?php echo $this->strUrl?>">press directed link</a> 
+<script type="text/javascript">
+window.setTimeout(function() {
+	location.href = '<?php echo $this->strUrl?>';
+	}, 6000);
+</script>  
+    
+    
+    	  

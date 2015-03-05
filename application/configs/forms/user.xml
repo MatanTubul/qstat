@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms>
+	<profile>
+		<id>userProfileFormExtra</id>
+		<name>userProfileFormExtra</name>
+		<prefixPath>
+			<prefix>Bf_Form_</prefix>
+			<path>Bf/Form/</path>
+		</prefixPath>
+		<elements>
+			<groups>
+				<type>DbSelect</type>
+				<options>
+					<dbSelect>Select id_groups, groups_name from groups</dbSelect>
+					<valueColumn>groups_name</valueColumn>
+					<identityColumn>id_groups</identityColumn>
+					<label>groups:</label>
+					<validators>
+						<notempty>
+							<validator>NotEmpty</validator>
+							<options>
+								<messages>
+									<isEmpty>Your username is required</isEmpty>
+								</messages>
+							</options>
+						</notempty>
+					</validators>
+					<filters>
+						<trim>
+							<filter>StringTrim</filter>
+						</trim>
+					</filters>
+					<class></class>
+					<required>true</required>
+				</options>
+			</groups>
+			<sites>
+				<type>text</type>
+				<options>
+					<label>sites:</label>
+					<size>40</size>
+					<validators>
+						<notempty>
+							<validator>NotEmpty</validator>
+							<options>
+								<messages>
+									<isEmpty>Your email address is required</isEmpty>
+								</messages>
+							</options>
+						</notempty>
+					</validators>
+					<filters>
+						<trim>
+							<filter>StringTrim</filter>
+						</trim>
+					</filters>
+					<class></class>
+					<required>true</required>
+				</options>
+			</sites>
+			<role>
+				<type>text</type>
+				<options>
+					<label>role:</label>
+					<size>40</size>
+					<validators>
+						<notempty>
+							<validator>NotEmpty</validator>
+							<options>
+								<messages>
+									<isEmpty>Your first name is required</isEmpty>
+								</messages>
+							</options>
+						</notempty>
+					</validators>
+					<filters>
+						<trim>
+							<filter>StringTrim</filter>
+						</trim>
+					</filters>
+					<class></class>
+					<required>true</required>
+				</options>
+			</role>
+		</elements>
+	</profile>
+</forms>

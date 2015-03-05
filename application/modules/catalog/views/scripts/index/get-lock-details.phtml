@@ -1,0 +1,73 @@
+<?php
+if ( empty($this->objData) ) {
+	$this->translate("MSG_NO_PARAMS");
+	exit();
+}
+
+$objDateTimeElement = new Bf_Form_Element_DateTime( Qstat_Db_Table_Lock::COL_LOCK_SCHEDULED_UNLOCK );
+$objDateTimeElement->setAttrib( 'id', Qstat_Db_Table_Lock::COL_LOCK_SCHEDULED_UNLOCK );
+$objDateTimeElement->removeDecorator('Label');
+$strForm = $objDateTimeElement->render();
+
+$lockParameters = array();
+?>
+
+<table>
+	<tr>
+		<th align="center"><?php echo $this->translate("LBL_CATALOG_TITLE"); ?></th>
+		<th align="center"><?php echo $this->translate("LBL_LOCK_DETAILS"); ?></th>
+		<th></th>
+	</tr>
+	<?php
+	foreach ( $this->objData as $objRowData ) {
+		$lockParameters[] = array(
+			'cat_id' => $objRowData->{'cat_id'},
+			Qstat_Db_Table_Lock::COL_ID_LOCK => $objRowData->{Qstat_Db_Table_Lock::COL_ID_LOCK},
+		);
+		?>
+		<tr align="left">
+			<td>
+				<?php echo $objRowData->{Catalog_Model_CatalogData::COL_TITLE}; ?>
+			</td>
+			<td>
+				<?php
+				if ( ! empty( $objRowData->{Qstat_Db_Table_Lock::COL_ID_LOCK} ) ) {
+					echo $this->lockData($objRowData);
+				}
+				?>
+			</td>
+			<td ></td>
+		</tr>
+		<?php
+	}
+	?>
+	<tr>
+		<td>Please select the Date</td>
+		<td>
+			<?php echo $strForm; ?>
+		</td>
+		<td>
+			<button onclick="create_lock( '<?php echo $this->escape( json_encode($lockParameters) ); ?>', $('#<?php echo Qstat_Db_Table_Lock::COL_LOCK_SCHEDULED_UNLOCK; ?>').val() );" type="button">
+				<?php echo $this->translate('LBL_BUTTON_CREATE_SCHEDULED_LOCK'); ?>
+			</button>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>
+			<button onclick="create_lock( '<?php echo $this->escape( json_encode($lockParameters) ); ?>' );" type="button">
+				Default Lock
+			</button>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td>
+			<button onclick="release_lock('<?php echo $this->escape( json_encode($lockParameters) ); ?>');" type="button">
+				<?php echo $this->translate('LBL_BUTTON_RELEASE_LOCK'); ?>
+			</button>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,53 @@
+/* YUI Menu */
+
+/* Vertical */
+.yui-skin-sam .yuimenu {	
+	font-family: Verdana; /* font name */
+	font-size: medium; /* font size */
+	line-height: 2;
+}
+.yui-skin-sam .yuimenu .bd {	
+	background-color: #F1F1F1;
+
+	/*z-index: 10020;*/
+}
+.yui-skin-sam .yuimenu h6 {
+	font-size: medium; /* font size */
+}
+.yui-skin-sam .yuimenu div.first-of-type {
+	border: 0px;
+}
+.yui-skin-sam .yuimenuitem a {
+	cursor: pointer;
+}
+.yui-skin-sam .yuimenuitem-selected {
+	background-color: ;
+}
+.yui-skin-sam .yuimenuitem-hassubmenu-selected {
+	background-color: ;
+}
+
+/* Horizontal */
+.yui-skin-sam .yuimenubar {	
+	font-family: Verdana; /* font name */
+	font-size: medium; /* font size */
+}
+.yui-skin-sam .yuimenubar .bd {	
+	background-color: #F1F1F1;
+
+	/*z-index: 10020;*/
+}
+.yui-skin-sam .yuimenubar h6 {
+	font-size: medium; /* font size */
+}
+.yui-skin-sam .yuimenubaritem a {
+	cursor: pointer;
+}
+.yui-skin-sam .yuimenubaritem-selected {
+
+	/*background-image: url(my_bg_image.png);*/ /* enter your own image */
+}
+.yui-skin-sam .yuimenubaritem-hassubmenu-selected {
+
+	/*background-image: url(my_bg_image.png);*/ /* enter your own image */
+}

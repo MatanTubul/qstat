@@ -1,0 +1,50 @@
+<?php
+
+echo $this->Actions();
+echo $this->grid;
+echo $this->Actions();
+?>
+
+<script type="text/javascript">
+	/*<![CDATA[*/
+	function prepareSubGroupCell(grid) {
+		grid
+		.find("td.sub-groups-column")
+		.hover(
+			function() {
+				$(this)
+				.children("div")
+				.css({
+					width: "30%",
+					position: "absolute",
+					top: "3px",
+					left: "35%",
+					background: "#e1effb",
+					padding: "10px",
+					"white-space": "normal"
+				});
+			},
+			function() {
+
+				$(this)
+				.children("div")
+				.css({
+					width: "inherit",
+					position: "inherit",
+					background: "none",
+					padding: "0",
+					"white-space": "pre"
+				});
+			}
+		);
+	}
+	function editMulti() {
+		var selectedRow = jQuery('#users').jqGrid('getGridParam', 'selarrrow');
+		var params = { "users-ids": selectedRow.join(',') };
+		var url = '<?php echo $this->url( array ('module' => 'user', 'controller' => 'index', 'action' => 'edit-multi'), null, true ); ?>';
+		url = url + "?" + decodeURIComponent( $.param(params) );
+		var newTabOpened = window.open(url, '_blank');
+		newTabOpened.focus();
+	}
+	/*]]>*/
+</script>

@@ -1,0 +1,63 @@
+<?php
+echo "<pre>".print_r($_POST,true)."</pre>"; 
+?>
+<meta charset="utf-8">
+	<style>
+	#inuseList, #availList { list-style-type: none; margin: 0; padding: 0 0 2.5em;  margin-right: 10px;  background: #eee; padding: 5px; min-width: 120px !important; }
+	#inuseList li, #availList li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; width: 120px; }
+	</style>
+	<script>
+	$(function() {
+		$( "#inuseList").sortable({
+			connectWith: ".connectedSortable"
+		}).disableSelection();
+		
+		$( "#availList").sortable({
+			connectWith: ".connectedSortable",
+			receive: function(event, ui) { 
+				alert(ui.item.('input').value()); 
+			}
+		}).disableSelection();
+		
+		
+	});
+	
+	</script>
+
+<div class="demo">
+<div style="float: left;">
+<form name="frm" id="frm" action="/catalog/index/test" method="post">
+In use:
+<ul id="inuseList" class="connectedSortable">
+
+	<li class="ui-state-default"><input type="hidden" name="attribs[1]" value="1">Item 1</li>
+	<li class="ui-state-default"><input type="hidden" name="attribs[2]" value="1">Item 2</li>
+	<li class="ui-state-default"><input type="hidden" name="attribs[3]" value="1">Item 3</li>
+	<li class="ui-state-default"><input type="hidden" name="attribs[4]" value="1">Item 4</li>
+	<li class="ui-state-default"><input type="hidden" name="attribs[5]" value="1">Item 5</li>
+</ul>
+<button type="submit">Submit</button>
+</form>
+</div>
+<div style="float: left;">
+Available:
+<ul id="availList" class="connectedSortable">
+	<li class="ui-state-highlight"><input type="hidden" name="attribs[6]" value="1">Item 6</li>
+	<li class="ui-state-highlight"><input type="hidden" name="attribs[7]" value="1">Item 7</li>
+	<li class="ui-state-highlight"><input type="hidden" name="attribs[8]" value="1">Item 8</li>
+	<li class="ui-state-highlight"><input type="hidden" name="attribs[9]" value="1">Item 9</li>
+	<li class="ui-state-highlight"><input type="hidden" name="attribs[10]" value="1">Item 10</li>
+</ul>
+</div>
+</div><!-- End demo -->
+
+
+
+<div class="demo-description">
+<p>
+	Sort items from one list into another and vice versa, by passing a selector into
+	the <code>connectWith</code> option. The simplest way to do this is to
+	group all related lists with a CSS class, and then pass that class into the
+	sortable function (i.e., <code>connectWith: '.myclass'</code>).
+</p>
+</div><!-- End demo-description -->
