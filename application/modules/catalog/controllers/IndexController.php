@@ -2,6 +2,8 @@
 
 class Catalog_IndexController extends Zend_Controller_Action
 {
+    //check
+
 	const DISPLAY_MODE_VIEW = 'view';
 	const DISPLAY_MODE_EDIT = 'edit';
 	const DISPLAY_MODE_ADD = 'add';
